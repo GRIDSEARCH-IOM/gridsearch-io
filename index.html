@@ -17,7 +17,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  @font-face {
+    font-family: 'Garet';
+    src: url('https://strategic-mind.sirv.com/Gridsearch/Garet-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+
 
   :root {
     --navy:       #0B1623;
@@ -86,10 +94,10 @@
 
   /* Wordmark — clean sans-serif, no logo image */
   .wordmark {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Garet', 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: clamp(68px, 11vw, 120px);
-    letter-spacing: -2px;
+    font-size: clamp(48px, 7vw, 80px);
+    letter-spacing: -1px;
     line-height: 1;
     color: var(--white);
     text-transform: uppercase;
@@ -1082,13 +1090,4 @@
             <label class="form-label">Country <span class="required">*</span></label>
             <select class="form-select" name="country" required>
               <option value="" disabled selected>Select country</option>
-              <option>United Kingdom</option>
-              <option>United States</option>
-              <option>Australia</option>
-              <option>Canada</option>
-              <option>Germany</option>
-              <option>France</option>
-              <option>Netherlands</option>
-              <option>Sweden</option>
-              <option>Norway</option>
-              <option>Denmar
+         
