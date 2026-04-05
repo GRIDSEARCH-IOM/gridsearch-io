@@ -320,13 +320,16 @@
     background: var(--orange);
     padding: 7px 14px;
   }
-  .problem-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .problem-list { list-style: none; display: flex; flex-direction: column; gap: 2px; text-align: left; width: 100%; }
   .problem-item {
     background: var(--navy-light);
     padding: 24px 28px;
     display: flex;
     gap: 20px;
     align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
   }
   .problem-num {
     font-family: 'Barlow Condensed', sans-serif;
@@ -336,6 +339,7 @@
     line-height: 1;
     min-width: 32px;
     margin-top: 2px;
+    text-align: left;
   }
   .problem-item-title {
     font-family: 'Barlow Condensed', sans-serif;
@@ -345,6 +349,7 @@
     letter-spacing: 0.5px;
     color: var(--white);
     margin-bottom: 6px;
+    text-align: left;
   }
   .problem-item-desc {
     font-size: 13px;
@@ -352,6 +357,7 @@
     line-height: 1.65;
     color: var(--grey);
     max-width: 52ch;
+    text-align: left;
   }
 
   /* ─────────────────────────────
@@ -452,6 +458,18 @@
      WHO IT'S FOR
   ───────────────────────────── */
   .who-wrap { background: var(--navy-mid); }
+  .phase-badge {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--orange);
+    padding: 3px 8px;
+    margin-bottom: 10px;
+  }
   .who-inner {
     max-width: 1080px;
     margin: 0 auto;
@@ -784,7 +802,9 @@
 
   /* RESPONSIVE */
   @media (max-width: 860px) {
-    .problem-cols   { grid-template-columns: 1fr; gap: 40px; }
+    .problem-cols   { grid-template-columns: 1fr; gap: 40px; text-align: left; }
+    .problem-list   { text-align: left; width: 100%; }
+    .problem-item   { text-align: left; width: 100%; box-sizing: border-box; }
     .pillars-grid   { grid-template-columns: 1fr 1fr; }
     .who-grid       { grid-template-columns: 1fr 1fr; }
     .status-cols    { grid-template-columns: 1fr; }
@@ -801,8 +821,32 @@
     .modal        { padding: 40px 24px; }
   }
 </style>
+
+<!-- CookieScript — loads first to manage consent -->
+<script type="text/javascript" charset="UTF-8"
+  src="//cdn.cookie-script.com/s/f5b936c0b7af46db54283a769cbe0477.js">
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QDR6H92');</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "vkxesbtbwt");
+</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QDR6H92"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 
 <!-- ══════════════════════════════
      HERO
@@ -813,8 +857,8 @@
     <h1 class="wordmark">GRIDSEARCH</h1>
     <div class="tagline">unified rescue coordination</div>
     <div class="hero-divider"></div>
-    <p class="hero-headline">Establishing a structured coordination engine for community-led search and rescue<br>— architected for global impact.</p>
-    <p class="hero-statement">The tools that coordinate professional search and rescue were never built for the people who answer the call first.</p>
+    <p class="hero-headline">The digital equivalent of a First-Aid Kit for search operations — deployable in seconds, providing the essential structural foundation to manage an incident from initiation to resolution.</p>
+    <p class="hero-statement">GRIDSEARCH stands on its own for the full duration of a search. Where an incident escalates, it allows for seamless, high-integrity data sharing with professional SAR teams.</p>
     <div class="hero-ctas">
       <a href="#problem" class="btn-primary">Learn More</a>
       <a href="mailto:investors@gridsearch.io?subject=Investor%20Access%20Request%20%E2%80%94%20GRIDSEARCH" class="btn-ghost">Request Investor Access</a>
@@ -897,7 +941,7 @@
     <div class="pillar">
       <span class="pillar-icon">◉</span>
       <div class="pillar-title">Volunteer Safety Monitoring</div>
-      <div class="pillar-desc">Fall detection, inactivity alerts, and an SOS button. The Hard-Cut Protocol ensures telemetry is programmatically severed immediately upon stopping the search to ensure total privacy — enforced at the architecture level, not a configurable setting.</div>
+      <div class="pillar-desc">Fall detection, inactivity alerts, and an SOS emergency button. The Hard-Cut Protocol is an architectural enforcement: GPS tracking is programmatically severed the moment a volunteer presses End Search — not a configurable setting. Total volunteer privacy, by design.</div>
     </div>
     <div class="pillar">
       <span class="pillar-icon">⚖</span>
@@ -909,7 +953,7 @@
     <div class="pillar">
       <span class="pillar-icon">📋</span>
       <div class="pillar-title">One-Tap Field Reporting</div>
-      <div class="pillar-desc">Sightings, clues, hazards, and assistance requests captured in a single tap — with integrated photo capture and voice-to-text for hands-free reporting. GPS-tagged and timestamped automatically.</div>
+      <div class="pillar-desc">Sightings, clues, hazards, and assistance requests captured in a single tap — with integrated photo capture and voice-to-text for hands-free reporting. GPS-tagged and timestamped automatically. Utilises an automated client-side compression protocol to ensure the platform remains light and performant during high-volume incidents.</div>
     </div>
     <div class="pillar">
       <span class="pillar-icon">📡</span>
@@ -919,7 +963,7 @@
     <div class="pillar">
       <span class="pillar-icon">&#9881;</span>
       <div class="pillar-title">Optimised Field Interface</div>
-      <div class="pillar-desc">Intuitive design for rapid deployment in high-pressure environments, reliable regardless of weather conditions. Designed with 64×64 dp touch targets, night and day visual optimisation, and rapid onboarding with no heavy training required.</div>
+      <div class="pillar-desc">Glove-friendly 64×64 dp touch targets designed for rapid onboarding with no heavy training required. Night and day visual optimisation. Reliable regardless of weather conditions or environment.</div>
     </div>
 
     <!-- Row 3 — Full-width centred hero pillar -->
@@ -939,28 +983,33 @@
 ════════════════════════════════ -->
 <div class="who-wrap">
   <div class="who-inner">
-    <div class="section-label">Who It's For</div>
-    <h2 class="section-title">Built for every<br>community that searches.</h2>
+    <div class="section-label">Behavioural Intelligence</div>
+    <h2 class="section-title">Future-Ready Behavioural Intelligence.</h2>
+    <p class="section-body" style="margin-bottom:32px;">Proprietary data modules grounded in established Lost Person Behaviour research, arriving in Phase 3. Modular Subject Profile Libraries will unlock specialised search behaviours for each organisation type.</p>
     <div class="who-grid">
       <div class="who-card">
         <span class="who-icon">🔍</span>
+        <div class="phase-badge">Phase 1</div>
         <div class="who-title">Missing Persons SAR</div>
-        <div class="who-desc">Community and volunteer groups coordinating searches for missing people.</div>
+        <div class="who-desc">Human subject profiles active from Phase 1. Community and volunteer groups coordinating searches for missing people.</div>
       </div>
       <div class="who-card">
         <span class="who-icon">🐕</span>
+        <div class="phase-badge">Phase 3</div>
         <div class="who-title">Canine Rescue</div>
-        <div class="who-desc">Dog rescue organisations running searches for lost or missing animals.</div>
+        <div class="who-desc">Canine behaviour module unlocked in Phase 3. Dog rescue organisations and canine SAR teams.</div>
       </div>
       <div class="who-card">
         <span class="who-icon">🦅</span>
+        <div class="phase-badge">Phase 3</div>
         <div class="who-title">Wildlife Rescue</div>
-        <div class="who-desc">Charities and responders coordinating injured wildlife and animal searches.</div>
+        <div class="who-desc">Specialist wildlife module unlocked in Phase 3. Charities and responders coordinating injured wildlife searches.</div>
       </div>
       <div class="who-card">
         <span class="who-icon">🏘</span>
+        <div class="phase-badge">Phase 3</div>
         <div class="who-title">Rural Communities</div>
-        <div class="who-desc">Councils, farms, and rural authorities managing large-animal and livestock incidents.</div>
+        <div class="who-desc">Large animal module unlocked in Phase 3. Councils, farms, and rural authorities managing livestock incidents.</div>
       </div>
     </div>
   </div>
@@ -977,7 +1026,7 @@
   <div class="status-cols">
     <div class="status-card">
       <div class="status-head">Build Specification</div>
-      <div class="status-body">Master Build Specification complete — Phase 1 pilot committed. Every architectural decision, product feature, and commercial model documented to an authoritative build standard.</div>
+      <div class="status-body">Master Build Specification complete. MVP feature set defined: incident creation, map tracking, safety monitoring, and Court-Admissible Audit Trail. Phase 1 pilot partner committed.</div>
     </div>
     <div class="status-card">
       <div class="status-head">Pilot Partner</div>
@@ -1034,60 +1083,178 @@
 <!-- ══════════════════════════════
      FOOTER
 ════════════════════════════════ -->
-<div class="footer-inner">
-  <div>
-    <h2 class="footer-title">Follow<br>the build.</h2>
-    <p class="footer-sub">Updates, progress, and early access — direct from the founder.</p>
-  </div>
-  <div class="footer-actions">
-    <a href="mailto:ops@gridsearch.io" class="btn-primary">Get In Touch</a>
-    <a href="mailto:investors@gridsearch.io?subject=Investor%20Access%20Request%20%E2%80%94%20GRIDSEARCH" class="btn-ghost">Request Investor Access</a>
+<!-- FOLLOW THE BUILD — FOOTER FORM SECTION -->
+<div style="background:var(--navy-mid);border-top:1px solid var(--rule);padding:0;">
+  <div style="max-width:1080px;margin:0 auto;padding:80px 32px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+
+      <!-- Left: heading + context -->
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:16px;">Stay Informed</div>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(32px,4vw,52px);text-transform:uppercase;color:var(--white);line-height:1.05;margin-bottom:16px;">Follow<br>the build.</h2>
+        <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--grey);max-width:40ch;">Register to receive updates on the platform build, pilot progress, and launch milestones — direct from the founder.</p>
+      </div>
+
+      <!-- Right: Operational Grid Form v3 — reskinned to brand palette -->
+      <div>
+
+<style>
+  .gs-wrap { max-width:620px; padding:0; font-family:'Barlow','Barlow Condensed',sans-serif; }
+  .gs-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
+  .gs-input {
+    background:var(--navy); border:1px solid var(--rule);
+    color:var(--white); padding:0 16px; height:56px;
+    font-size:13px; font-family:'Barlow',sans-serif;
+    border-radius:0; outline:none; width:100%; box-sizing:border-box;
+    transition:border-color 0.15s, background 0.15s;
+  }
+  .gs-input::placeholder { color:var(--grey); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; }
+  .gs-input:focus { border-color:var(--orange); background:var(--navy-mid); }
+  .gs-chip-header { display:flex; align-items:center; justify-content:space-between; margin:16px 0 10px 0; }
+  .gs-chip-label { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--white); }
+  .gs-chip-rule  { font-family:'Barlow Condensed',sans-serif; font-size:10px; color:var(--grey); letter-spacing:0.08em; text-transform:uppercase; }
+  .gs-chip-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:16px; }
+  .gs-chip {
+    height:56px; background:var(--navy); border:1px solid var(--rule); border-radius:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:4px; cursor:pointer; transition:border-color 0.15s, box-shadow 0.15s;
+    padding:8px 6px; text-align:center; user-select:none; -webkit-user-select:none;
+  }
+  .gs-chip:hover { border-color:var(--grey); }
+  .gs-chip.active { border-color:var(--orange); box-shadow:0 0 0 1px var(--orange), 0 0 14px rgba(232,130,26,0.18); }
+  .gs-chip-code { font-family:'Barlow Condensed',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.14em; color:var(--rule); text-transform:uppercase; transition:color 0.15s; }
+  .gs-chip.active .gs-chip-code { color:var(--orange); }
+  .gs-chip-name { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; color:var(--grey); text-transform:uppercase; letter-spacing:0.05em; line-height:1.2; transition:color 0.15s; }
+  .gs-chip.active .gs-chip-name { color:var(--orange); }
+  .gs-divider { border:none; border-top:1px solid var(--rule); margin:16px 0; }
+  .gs-consent {
+    display:flex; align-items:flex-start; gap:12px; margin-bottom:16px;
+    padding:14px 16px; background:var(--navy); border:1px solid var(--rule); border-radius:0;
+  }
+  .gs-consent-check { width:18px; height:18px; margin-top:2px; accent-color:var(--orange); flex-shrink:0; cursor:pointer; }
+  .gs-consent-text { font-family:'Barlow',sans-serif; font-size:11px; color:var(--grey); line-height:1.6; letter-spacing:0.01em; }
+  .gs-consent-text strong { color:var(--white); font-weight:600; }
+  .gs-btn-primary {
+    width:100%; height:56px; background:var(--orange); color:var(--white);
+    border:none; border-radius:0; font-family:'Barlow Condensed',sans-serif;
+    font-size:13px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+    cursor:pointer; transition:background 0.15s;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+  }
+  .gs-btn-primary:hover { background:var(--orange-dim); }
+  .gs-btn-primary:active { transform:scale(0.99); }
+  .gs-status { display:flex; align-items:center; gap:8px; margin-top:14px; }
+  .gs-status-dot { width:7px; height:7px; border-radius:50%; background:#2a6a2a; border:1px solid #3a8a3a; flex-shrink:0; animation:gs-pulse 2.5s infinite; }
+  @keyframes gs-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+  .gs-status-text { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--white); }
+  .gs-hp { display:none; }
+  @media(max-width:560px){ .gs-chip-grid{ grid-template-columns:repeat(2,1fr); } .gs-grid-2{ grid-template-columns:1fr; } }
+</style>
+
+<div class="gs-wrap">
+  <form action="https://submit-form.com/ZhtiuMt2A" method="POST" id="gs-form">
+    <input type="hidden" name="_redirect" value="https://gridsearch.io/thanks" />
+    <input type="hidden" name="_append" value="false" />
+    <input class="gs-hp" type="checkbox" name="_honeypot" tabindex="-1" autocomplete="off" />
+    <input type="hidden" name="audience-type" id="gs-audience-value" value="Investor" />
+
+    <div class="gs-grid-2">
+      <input class="gs-input" id="full-name" name="full-name" type="text" placeholder="Full Name *" required />
+      <input class="gs-input" id="email" name="email" type="email" placeholder="Email Address *" required />
+    </div>
+    <div class="gs-grid-2">
+      <input class="gs-input" id="organisation" name="organisation" type="text" placeholder="Company / Organisation" />
+      <input class="gs-input" id="country" name="country" type="text" placeholder="Country *" required />
+    </div>
+
+    <div class="gs-chip-header">
+      <span class="gs-chip-label">About You</span>
+      <span class="gs-chip-rule">Select one</span>
+    </div>
+
+    <div class="gs-chip-grid" id="gs-chip-grid">
+      <div class="gs-chip active" data-value="Investor" onclick="selectChip(this)">
+        <span class="gs-chip-code">INV</span><span class="gs-chip-name">Investor</span>
+      </div>
+      <div class="gs-chip" data-value="Charity" onclick="selectChip(this)">
+        <span class="gs-chip-code">CHA</span><span class="gs-chip-name">Charities</span>
+      </div>
+      <div class="gs-chip" data-value="Emergency Services" onclick="selectChip(this)">
+        <span class="gs-chip-code">EMS</span><span class="gs-chip-name">Emergency Services</span>
+      </div>
+      <div class="gs-chip" data-value="Volunteer Group" onclick="selectChip(this)">
+        <span class="gs-chip-code">VOL</span><span class="gs-chip-name">Volunteer Group</span>
+      </div>
+      <div class="gs-chip" data-value="Government / Municipality" onclick="selectChip(this)">
+        <span class="gs-chip-code">GOV</span><span class="gs-chip-name">Local Council / Authority</span>
+      </div>
+      <div class="gs-chip" data-value="NGO" onclick="selectChip(this)">
+        <span class="gs-chip-code">NGO</span><span class="gs-chip-name">Aid / Community Org</span>
+      </div>
+      <div class="gs-chip" data-value="Press / Media" onclick="selectChip(this)">
+        <span class="gs-chip-code">MED</span><span class="gs-chip-name">Press / Media</span>
+      </div>
+      <div class="gs-chip" data-value="Other" onclick="selectChip(this)">
+        <span class="gs-chip-code">OTH</span><span class="gs-chip-name">Other</span>
+      </div>
+    </div>
+
+    <hr class="gs-divider" />
+
+    <div class="gs-consent">
+      <input class="gs-consent-check" type="checkbox" id="consent" name="consent" value="yes" required />
+      <label class="gs-consent-text" for="consent">
+        <strong>Data Governance —</strong> I agree to receive GRIDSEARCH updates and understand I can unsubscribe at any time. My data will never be shared.
+      </label>
+    </div>
+
+    <button class="gs-btn-primary" type="submit">Join the List &nbsp;→</button>
+
+    <div class="gs-status">
+      <div class="gs-status-dot"></div>
+      <span class="gs-status-text">Registration Open</span>
+    </div>
+  </form>
+</div>
+
+<script>
+  function selectChip(el) {
+    document.querySelectorAll('.gs-chip').forEach(function(c){ c.classList.remove('active'); });
+    el.classList.add('active');
+    document.getElementById('gs-audience-value').value = el.getAttribute('data-value');
+  }
+  document.getElementById('gs-form').addEventListener('submit', function(e) {
+    if (!document.getElementById('gs-audience-value').value) {
+      e.preventDefault();
+      document.getElementById('gs-chip-grid').style.outline = '1px solid #e24b4a';
+    }
+  });
+</script>
+
+      </div>
+    </div>
   </div>
 </div>
-<div class="confidential">
-  <span>GRIDSEARCH © 2026</span>
-  <span>Isle of Man</span>
-  <span>gridsearch.io</span>
+
+<!-- Contact buttons row -->
+<div style="background:var(--navy-mid);border-top:1px solid var(--rule);padding:40px 32px;">
+  <div style="max-width:1080px;margin:0 auto;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center;">
+    <a href="mailto:ops@gridsearch.io" style="display:inline-block;background:var(--orange);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:15px 36px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--orange-dim)'" onmouseout="this.style.background='var(--orange)'">Get In Touch</a>
+    <a href="mailto:investors@gridsearch.io?subject=Investor%20Access%20Request%20%E2%80%94%20GRIDSEARCH" style="display:inline-block;background:transparent;color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:14px 36px;text-decoration:none;border:1px solid rgba(244,242,238,0.28);transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='rgba(244,242,238,0.28)';this.style.color='var(--white)'">Request Investor Access</a>
+  </div>
 </div>
 
+<!-- Footer bar -->
+<div style="border-top:1px solid var(--rule);">
+  <div class="confidential">
+    <span>GRIDSEARCH &copy; 2026</span>
+    <span>Isle of Man</span>
+    <span>gridsearch.io</span>
+  </div>
+  <div style="border-top:1px solid var(--rule);padding:14px 32px;max-width:1080px;margin:0 auto;text-align:right;">
+    <span style="font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rule);">Created by <a href="https://www.strategic-mind.consulting" target="_blank" rel="noopener" style="color:var(--grey);text-decoration:none;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='var(--grey)'">Strategic Mind Consulting</a></span>
+  </div>
+</div>
 
-<!-- ══════════════════════════════
-     INVESTOR ACCESS MODAL
-════════════════════════════════ -->
-<div class="modal-overlay" id="investorModal" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-
-    <div id="formView">
-      <div class="modal-label">Investor Access</div>
-      <h2 class="modal-title">Request the<br>Full Deck.</h2>
-      <p class="modal-sub">Complete the form below. We review all requests personally and will be in touch within 48 hours with private access details.</p>
-
-      <form id="accessForm" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-field half">
-            <label class="form-label">Full Name <span class="required">*</span></label>
-            <input class="form-input" type="text" name="name" placeholder="Your full name" required>
-          </div>
-          <div class="form-field half">
-            <label class="form-label">Company / Organisation <span class="required">*</span></label>
-            <input class="form-input" type="text" name="company" placeholder="Your company" required>
-          </div>
-        </div>
-
-        <div class="form-field">
-          <label class="form-label">Professional Email <span class="required">*</span></label>
-          <input class="form-input" type="email" name="email" placeholder="name@yourcompany.com" required>
-          <div class="form-note">Please use your professional or organisational email address.</div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-field half">
-            <label class="form-label">Phone Number <span class="required">*</span></label>
-            <input class="form-input" type="tel" name="phone" placeholder="+1 234 567 8900" required>
-          </div>
-          <div class="form-field half">
-            <label class="form-label">Country <span class="required">*</span></label>
-            <select class="form-select" name="country" required>
-              <option value="" disabled selected>Select country</option>
-         
+</body>
+</html>
