@@ -650,16 +650,17 @@
   .confidential {
     border-top: 1px solid var(--rule);
     padding: 24px 32px;
-    max-width: 1080px;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 48px;
+    box-sizing: border-box;
   }
   .confidential span {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--rule);
   }
@@ -822,25 +823,57 @@
   }
 </style>
 
-<!-- CookieScript — loads first to manage consent -->
+<!-- 1. Default Consent — must be first, before any tracking loads -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage':        'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data':      'denied',
+    'wait_for_update':   500
+  });
+</script>
+
+<!-- 2. CookieScript — reads default denial, shows banner, updates consent on accept -->
 <script type="text/javascript" charset="UTF-8"
   src="//cdn.cookie-script.com/s/f5b936c0b7af46db54283a769cbe0477.js">
 </script>
 
-<!-- Google Tag Manager -->
+<!-- 3. Google Tag Manager — loads after consent state is established -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5QDR6H92');</script>
 
-<!-- Microsoft Clarity -->
+<!-- 4. Microsoft Clarity — only fires after analytics_storage is granted -->
 <script type="text/javascript">
-(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "vkxesbtbwt");
+(function() {
+  function loadClarity() {
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vkxesbtbwt");
+  }
+  // Listen for CookieScript consent update
+  window.addEventListener('CookieScriptAccept', function() {
+    if (window.CookieScript && window.CookieScript.instance) {
+      var state = window.CookieScript.instance.currentState();
+      if (state && state.categories && state.categories.indexOf('performance') > -1) {
+        loadClarity();
+      }
+    }
+  });
+  // Also fire if consent was already granted on a previous visit
+  window.addEventListener('CookieScriptAcceptAll', function() {
+    loadClarity();
+  });
+})();
 </script>
+
+<!-- 5. Botpoison — spam protection, not affected by consent -->
+<script src="https://unpkg.com/@botpoison/browser" async></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -861,7 +894,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="hero-statement">GRIDSEARCH stands on its own for the full duration of a search. Where an incident escalates, it allows for seamless, high-integrity data sharing with professional SAR teams.</p>
     <div class="hero-ctas">
       <a href="#problem" class="btn-primary">Learn More</a>
-      <a href="/cdn-cgi/l/email-protection#98f1f6eefdebecf7eaebd8ffeaf1fcebfdf9eafbf0b6f1f7a7ebedfaf2fdfbeca5d1f6eefdebecf7eabdaaa8d9fbfbfdebebbdaaa8cafde9edfdebecbdaaa8bdddaabda0a8bda1acbdaaa8dfcad1dccbddd9cadbd0" class="btn-ghost">Request Investor Access</a>
+      <a href="mailto:investors@gridsearch.io?subject=Investor%20Access%20Request%20%E2%80%94%20GRIDSEARCH" class="btn-ghost">Request Investor Access</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -1061,7 +1094,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="founder-contact">
           <div class="founder-contact-item">
             <span class="contact-label">Email</span>
-            <a class="contact-value" href="/cdn-cgi/l/email-protection#9bf4ebe8dbfce9f2ffe8fefae9f8f3b5f2f4"><span class="__cf_email__" data-cfemail="503f202310372239342335312233387e393f">[email&#160;protected]</span></a>
+            <a class="contact-value" href="mailto:ops@gridsearch.io">ops@gridsearch.io</a>
           </div>
           <div class="founder-contact-item">
             <span class="contact-label">Phone</span>
@@ -1075,7 +1108,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <hr class="rule">
@@ -1154,6 +1186,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="gs-wrap">
   <form action="https://submit-form.com/ZhtiuMt2A" method="POST" id="gs-form">
     <input type="hidden" name="_redirect" value="https://gridsearch.io/thanks/" />
+    <input type="hidden" name="_botpoison" data-botpoison-public-key="pk_e08f2f15-d485-4381-9524-fa09ca1c5df8" />
     <input type="hidden" name="_append" value="false" />
     <input class="gs-hp" type="checkbox" name="_honeypot" tabindex="-1" autocomplete="off" />
     <input type="hidden" name="audience-type" id="gs-audience-value" value="Investor" />
@@ -1217,6 +1250,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </form>
 </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   function selectChip(el) {
@@ -1231,6 +1268,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   });
 </script>
+
+<!-- Contact buttons row -->
+<div style="background:var(--navy-mid);border-top:1px solid var(--rule);padding:40px 32px;width:100%;">
+  <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center;">
+    <a href="mailto:ops@gridsearch.io" style="display:inline-block;background:var(--orange);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:15px 36px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--orange-dim)'" onmouseout="this.style.background='var(--orange)'">Get In Touch</a>
+    <a href="mailto:investors@gridsearch.io?subject=Investor%20Access%20Request%20%E2%80%94%20GRIDSEARCH" style="display:inline-block;background:transparent;color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:14px 36px;text-decoration:none;border:1px solid rgba(244,242,238,0.28);transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='rgba(244,242,238,0.28)';this.style.color='var(--white)'">Request Investor Access</a>
+  </div>
+</div>
+
+<!-- Footer bar -->
+<div style="background:var(--navy);border-top:1px solid var(--rule);width:100%;display:block;position:relative;left:0;right:0;">
+  <div class="confidential">
+    <span>GRIDSEARCH &copy; 2026 &nbsp;&middot;&nbsp; Isle of Man &nbsp;&middot;&nbsp; gridsearch.io</span>
+  </div>
+  <div style="border-top:1px solid var(--rule);padding:14px 32px;text-align:center;">
+    <span style="font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rule);">Created by <a href="https://www.strategic-mind.consulting" target="_blank" rel="noopener" style="color:var(--grey);text-decoration:none;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='var(--grey)'">Strategic Mind Consulting</a></span>
+  </div>
+</div>
 
 </body>
 </html>
