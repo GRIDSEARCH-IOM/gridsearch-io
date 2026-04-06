@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRIDSEARCH — Confidential Investor Gateway</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Garet';
+    src: url('https://strategic-mind.sirv.com/Gridsearch/Garet-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy:       #0B1623;
+    --navy-mid:   #112033;
+    --navy-light: #1A2F45;
+    --orange:     #E8821A;
+    --orange-dim: #C46D10;
+    --white:      #F4F2EE;
+    --grey:       #8A9BAD;
+    --rule:       #1E3248;
+    --green:      #4CAF88;
+    --red:        #C0392B;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { text-wrap: balance; }
+
+  /* Prevent hyphenated words from breaking across lines */
+  .no-break { white-space: nowrap; }
+
+  /* ── NDA BANNER ── */
+  .nda-banner {
+    background: var(--navy-light);
+    border-bottom: 1px solid var(--rule);
+    padding: 13px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .nda-banner-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-align: center;
+  }
+  .nda-banner-text strong { color: var(--orange); font-weight: 700; }
+
+  /* ── HEADER ── */
+  .site-header-wrap { border-bottom: 1px solid var(--rule); }
+  .site-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 48px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .wordmark-block { display: flex; flex-direction: column; gap: 4px; }
+  .wordmark {
+    font-family: 'Garet', 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: -1px;
+    color: var(--white);
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    line-height: 1;
+  }
+  .wordmark-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(10px, 1.2vw, 13px);
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: lowercase;
+    color: var(--grey);
+    margin-top: 6px;
+  }
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .header-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .header-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  /* ── SHARED ── */
+  .section-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 68px 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-wrap.dark {
+    background: var(--navy-mid);
+    max-width: 100%;
+    padding: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 68px 48px;
+  }
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 2.6vw, 34px);
+    line-height: 1.08;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+  .section-body {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--grey);
+    max-width: 60ch;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 15px 36px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    line-height: 1;
+  }
+  .btn-primary:hover { background: var(--orange-dim); }
+
+  .btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    text-decoration: none;
+    border: 1px solid rgba(244,242,238,0.25);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    line-height: 1;
+  }
+  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--navy-light);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px 24px;
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--orange);
+    cursor: pointer;
+    transition: background 0.2s;
+    line-height: 1;
+  }
+  .btn-download:hover { background: var(--rule); }
+  .btn-download.disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 48px 68px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 64px;
+    align-items: start;
+  }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 54px);
+    line-height: 1.04;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+  .hero-title span { color: var(--orange); }
+  .hero-sub {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--grey);
+    max-width: 56ch;
+    margin-bottom: 36px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* Hero metadata card */
+  .hero-meta {
+    background: var(--navy-light);
+    border-top: 3px solid var(--orange);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-self: start;
+    margin-top: 8px;
+  }
+  .meta-item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .meta-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .meta-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .meta-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .meta-value.orange { color: var(--orange); }
+  .meta-value.small { font-size: 12px; font-weight: 400; color: var(--grey); }
+
+  /* ── THESIS GRID ── */
+  .thesis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 44px;
+  }
+  .thesis-card {
+    background: var(--navy-light);
+    padding: 32px 26px;
+    border-top: 3px solid var(--rule);
+    transition: border-color 0.25s;
+  }
+  .thesis-card:hover { border-color: var(--orange); }
+  .thesis-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--orange);
+    opacity: 0.35;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .thesis-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .thesis-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.72;
+    color: var(--grey);
+  }
+
+  /* ── THE PROBLEM ── */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 44px;
+    align-items: start;
+  }
+  .problem-quote {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--white);
+    text-transform: uppercase;
+    border-left: 3px solid var(--orange);
+    padding-left: 22px;
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+  .problem-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--grey);
+    margin-bottom: 24px;
+  }
+  .problem-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .problem-item {
+    background: var(--navy-light);
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .problem-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--orange);
+    line-height: 1;
+    min-width: 28px;
+    margin-top: 1px;
+  }
+  .problem-item-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    margin-bottom: 5px;
+  }
+  .problem-item-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--grey);
+  }
+
+  /* ── SOLUTION / PLATFORM ── */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 44px;
+  }
+  .platform-card {
+    background: var(--navy-light);
+    padding: 32px 28px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
+  .platform-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .platform-card:hover::before { transform: scaleX(1); }
+  .platform-icon { font-size: 20px; min-width: 24px; margin-top: 2px; }
+  .platform-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    margin-bottom: 8px;
+    text-wrap: balance;
+  }
+  .platform-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--grey);
+  }
+
+  /* ── DIFFERENTIATORS ── */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 44px;
+  }
+  .diff-card {
+    background: var(--navy-light);
+    padding: 32px 28px;
+  }
+  .diff-badge {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--orange);
+    padding: 4px 10px;
+    margin-bottom: 14px;
+  }
+  .diff-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 10px;
+    text-wrap: balance;
+  }
+  .diff-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.72;
+    color: var(--grey);
+  }
+
+  /* ── TABLE ── */
+  .table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 44px;
+  }
+  .comp-table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .comp-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+    font-weight: 600;
+    padding: 12px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  .comp-table th.gs-col {
+    color: var(--orange);
+    background: rgba(232,130,26,0.09);
+    border-bottom: 2px solid var(--orange);
+  }
+  .comp-table td {
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey);
+    border-bottom: 1px solid var(--rule);
+    vertical-align: middle;
+  }
+  .comp-table td:first-child {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .comp-table td.gs-col {
+    background: rgba(232,130,26,0.06);
+    border-left: 1px solid rgba(232,130,26,0.22);
+    border-right: 1px solid rgba(232,130,26,0.22);
+    color: var(--white);
+    font-weight: 500;
+  }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .tick  { color: var(--green); font-weight: 700; }
+  .cross { color: var(--red);   font-weight: 700; }
+  .gs    { color: var(--orange); font-weight: 900; }
+
+  /* ── ROADMAP ── */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 44px;
+  }
+  .phase-card {
+    background: var(--navy-light);
+    padding: 28px 22px;
+  }
+  .phase-card.active { border-top: 3px solid var(--orange); }
+  .phase-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+  .phase-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+  .phase-focus-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 8px;
+    margin-top: 14px;
+    display: block;
+  }
+  .phase-items { list-style: none; }
+  .phase-items li {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--grey);
+    padding: 5px 0 5px 14px;
+    position: relative;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--rule);
+  }
+  .phase-items li:last-child { border-bottom: none; }
+  .phase-items li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-size: 9px;
+    top: 7px;
+  }
+  .phase-status {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--orange);
+    padding: 4px 10px;
+  }
+
+  /* ── TRACTION ── */
+  .traction-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 44px;
+  }
+  .traction-card {
+    background: var(--navy-light);
+    padding: 32px 26px;
+  }
+  .traction-icon { margin-bottom: 18px; display: block; }
+  .traction-head {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .traction-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--white);
+  }
+
+  /* ── FINANCIALS NOTE ── */
+  .financials-note {
+    background: var(--navy-light);
+    border-left: 3px solid var(--orange);
+    padding: 28px 32px;
+    margin-top: 44px;
+  }
+  .financials-note-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .financials-note-text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--grey);
+    max-width: 60ch;
+  }
+
+  /* ── DUE DILIGENCE PACK ── */
+  .ddp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 44px;
+  }
+  .ddp-card {
+    background: var(--navy-light);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ddp-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--orange);
+    opacity: 0.3;
+    line-height: 1;
+  }
+  .ddp-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+  .ddp-subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .ddp-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.72;
+    color: var(--grey);
+    flex: 1;
+  }
+  .ddp-status { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); opacity: 1; }
+  .ddp-status.available { color: var(--orange); opacity: 1; }
+
+  /* ── TEAM ── */
+  .team-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-top: 44px;
+  }
+  .team-photo {
+    width: 160px;
+    height: 196px;
+    background: var(--navy-light);
+    border-top: 3px solid var(--orange);
+    overflow: hidden;
+  }
+  .team-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: left center;
+    display: block;
+  }
+  .team-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+  .team-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 18px;
+  }
+  .team-bio {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--grey);
+    max-width: 56ch;
+    margin-bottom: 24px;
+  }
+  .team-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+  }
+  .team-contact-item { display: flex; align-items: center; gap: 14px; }
+  .contact-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+    min-width: 64px;
+  }
+  .contact-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-value:hover { color: var(--orange); }
+
+  /* ── SECURITY ── */
+  .security-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 44px;
+  }
+  .security-card {
+    background: var(--navy-light);
+    padding: 28px 24px;
+  }
+  .security-head {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .security-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.72;
+    color: var(--white);
+  }
+
+  /* ── CTA FOOTER ── */
+  .cta-wrap { background: var(--navy-mid); border-top: 1px solid var(--rule); }
+  .cta-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 68px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+  }
+  .cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(26px, 3.2vw, 44px);
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .cta-sub { font-size: 14px; font-weight: 300; color: var(--grey); max-width: 48ch; }
+  .cta-actions { display: flex; flex-direction: column; gap: 12px; min-width: 220px; align-items: flex-end; }
+  .confidential-bar {
+    border-top: 1px solid var(--rule);
+    padding: 18px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .confidential-bar span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rule);
+  }
+  .confidential-bar span.highlight { color: var(--grey); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .hero              { grid-template-columns: 1fr; padding: 48px 32px; }
+    .hero-meta         { margin-top: 0; }
+    .thesis-grid       { grid-template-columns: 1fr 1fr; }
+    .problem-grid      { grid-template-columns: 1fr; }
+    .platform-grid     { grid-template-columns: 1fr; }
+    .diff-grid         { grid-template-columns: 1fr; }
+    .roadmap-grid      { grid-template-columns: 1fr 1fr; }
+    .traction-grid     { grid-template-columns: 1fr; }
+    .security-grid     { grid-template-columns: 1fr; }
+    .ddp-grid          { grid-template-columns: 1fr; }
+    .team-row          { grid-template-columns: 1fr; }
+    .team-photo        { width: 100%; height: 180px; }
+    .cta-inner         { grid-template-columns: 1fr; }
+    .cta-actions       { align-items: flex-start; }
+    .site-header       { padding: 20px 32px; }
+    .section-wrap      { padding: 52px 32px; }
+    .section-inner     { padding: 52px 32px; }
+  }
+  @media (max-width: 560px) {
+    .thesis-grid  { grid-template-columns: 1fr; }
+    .roadmap-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- CookieScript — loads first to manage consent -->
+<script type="text/javascript" charset="UTF-8"
+  src="//cdn.cookie-script.com/s/f5b936c0b7af46db54283a769cbe0477.js">
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QDR6H92');</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "vkxesbtbwt");
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QDR6H92"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NDA BANNER -->
+<div class="nda-banner">
+  <span class="nda-banner-text"><strong>Confidential.</strong> By accessing this page you confirm you have signed and returned a GRIDSEARCH Non-Disclosure Agreement. Not for distribution.</span>
+</div>
+
+<!-- HEADER -->
+<div class="site-header-wrap">
+  <div class="site-header">
+    <div class="wordmark-block">
+      <a href="https://gridsearch.io" class="wordmark">GRIDSEARCH</a>
+      <span class="wordmark-tagline">unified rescue <span class="no-break">co-ordination</span></span>
+    </div>
+
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Investment Case</div>
+    <h1 class="hero-title">A purpose-built <span class="no-break">co-ordination</span> platform for community-led search.</h1>
+    <p class="hero-sub">A vacancy has existed since community search began. No purpose-built <span class="no-break">co-ordination</span> platform has ever been built for this segment.<br>GRIDSEARCH fills it — from the MVP up, architected for global scale.<br><span style="color:var(--white);opacity:0.7;font-style:italic;">The digital equivalent of a First-Aid Kit for search operations: standalone, resilient, and <span class="no-break">court-admissible.</span></span></p>
+    <div class="hero-ctas">
+      <a href="mailto:investors@gridsearch.io?subject=Investment%20Enquiry%20%E2%80%94%20GRIDSEARCH" class="btn-primary">Contact the Founder</a>
+      <a href="#due-diligence" class="btn-ghost">Due Diligence Pack</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Stage</span>
+      <span class="meta-value">Seed</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Status</span>
+      <span class="meta-value orange">Phase 1 — Pilot Committed</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Domicile</span>
+      <span class="meta-value">Isle of Man</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Infrastructure</span>
+      <span class="meta-value">Isle of Man</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Financials</span>
+      <span class="meta-value small">In development — available to verified investors on request</span>
+    </div>
+  </div>
+</div>
+
+<!-- INVESTMENT THESIS -->
+<div class="section-wrap">
+  <div class="section-label">Investment Thesis</div>
+  <h2 class="section-title">Three structural pillars.</h2>
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="thesis-num">01</div>
+      <div class="thesis-title">Universal Frictionless Deployment</div>
+      <div class="thesis-body">Engineered for immediate, global activation. A fully mirrored Web + App architecture ensures any organisation can deploy a unified <span class="no-break">co-ordination</span> engine in seconds, across any device, with no training required. There is no functional distinction between the mobile app and the web platform.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="thesis-num">02</div>
+      <div class="thesis-title">Environmental & Technical Resilience</div>
+      <div class="thesis-body">Built for infrastructure instability. Burst Sync architecture stores data locally and synchronises on signal return — natively compatible with Satellite <span class="no-break">Direct-to-Cell</span> (D2C) technology from day one. Simultaneously utilises GPS, Galileo, and GLONASS. Automated thermal throttling at 40°C+ prevents hardware shutdown in the field.</div>
+    </div>
+    <div class="thesis-card">
+      <div class="thesis-num">03</div>
+      <div class="thesis-title"><span class="no-break">Court-Admissible</span> Operational Integrity</div>
+      <div class="thesis-body">The mandatory standard for liability management. Every platform action is logged with an immutable, tamper-evident cryptographic hash — entries cannot be edited or deleted. Telemetry <span class="no-break">Hard-Cut</span> logic programmatically severs GPS tracking upon 'End Search'. This is an architectural enforcement, not a configurable setting.</div>
+    </div>
+  </div>
+</div>
+
+<!-- THE PROBLEM -->
+<div class="section-wrap dark">
+  <div class="section-inner">
+    <div class="section-label">The Co-ordination Gap</div>
+    <h2 class="section-title">Volume is the enemy of <span class="no-break">co-ordination</span>.</h2>
+    <div class="problem-grid">
+      <div>
+        <div class="problem-quote">Even a single channel of simultaneous volunteer updates creates <span class="no-break">co-ordination</span> overload. Multiple channels make it even harder to manage.</div>
+        <p class="problem-body">Most community-led searches are <span class="no-break">co-ordinated</span> without purpose-built tools. The result is duplicated ground, missed areas, coordinator overload, and no verifiable record of what was searched. This is not a resource problem — it is a <span class="no-break">co-ordination</span> problem. GRIDSEARCH is the structured alternative.</p>
+      </div>
+      <ul class="problem-list">
+        <li class="problem-item">
+          <div class="problem-num">01</div>
+          <div>
+            <div class="problem-item-title">No Verified Coverage</div>
+            <div class="problem-item-desc">Without GPS-verified sector tracking, critical areas are missed and ground is duplicated. After the search, there is nothing to review, learn from, or present at inquest.</div>
+          </div>
+        </li>
+        <li class="problem-item">
+          <div class="problem-num">02</div>
+          <div>
+            <div class="problem-item-title">No Volunteer Safety Net</div>
+            <div class="problem-item-desc">No existing tool monitors volunteers working alone in difficult terrain. No fall detection, no inactivity alerts, no emergency function. If a volunteer goes down, no one knows.</div>
+          </div>
+        </li>
+        <li class="problem-item">
+          <div class="problem-num">03</div>
+          <div>
+            <div class="problem-item-title">No Legal Protection</div>
+            <div class="problem-item-desc">When a search results in a fatality or inquest, informal records cannot substitute for a structured, court-admissible audit trail. Organisations are legally exposed.</div>
+          </div>
+        </li>
+        <li class="problem-item">
+          <div class="problem-num">04</div>
+          <div>
+            <div class="problem-item-title">No Animal Search Capability</div>
+            <div class="problem-item-desc">Not one platform in either market has ever been designed to support animal searches. An entire segment — canine rescue, wildlife response, agricultural search — has no <span class="no-break">co-ordination</span> software at all.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PLATFORM — THE SOLUTION -->
+<div class="section-wrap">
+  <div class="section-label">Platform Architecture</div>
+  <h2 class="section-title">A Decision Support System. Not an autonomous one.</h2>
+  <p class="section-body">Coordinators retain full operational authority at all times.<br>GRIDSEARCH provides structure, intelligence, and accountability — not control.<br>Operational in minutes from any device. Zero training required by design.</p>
+  <div class="platform-grid">
+
+    <div class="platform-card">
+      <div class="platform-icon">📋</div>
+      <div>
+        <div class="platform-title">One-Tap Field Reporting</div>
+        <div class="platform-desc">Buttons for Possible Sighting, Confirmed Sighting, Report Clue, Report Hazard, Request Drone, and Need Help. Integrated photo capture with automatic GPS tagging and timestamping. Voice-to-text dictation processed by an AI engine that categorises reports automatically. Designed with 64×64 dp touch targets for use in the field — in any weather, on any device, with no training required. Utilises an automated <span class="no-break">client-side</span> compression protocol to ensure the platform remains light and performant during <span class="no-break">high-volume</span> incidents.</div>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-icon">◉</div>
+      <div>
+        <div class="platform-title">Volunteer Safety & <span class="no-break">Hard-Cut</span> Protocol</div>
+        <div class="platform-desc">GPS tracking is programmatically severed upon 'End Search'. This is an architectural enforcement — not a configurable setting. Active-state tracking operates only between 'Start Search' and 'End Search'. Fall detection, inactivity alerts, and an SOS emergency button are active throughout. If a fall is detected, co-ordinators are notified immediately with last known coordinates. Identity data and GPS tracks are siloed in separate encrypted tables, linked only by an anonymous ID.</div>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-icon">⚖</div>
+      <div>
+        <div class="platform-title">Court-Admissible Audit Trail</div>
+        <div class="platform-desc">Every platform action generates an automatic, timestamped, immutable log entry. Log entries cannot be edited or deleted — only annotations may be appended, and annotations are themselves logged. Each entry carries a cryptographic hash: any tampering is detectable on export. The export format is structured for legal proceedings, inquests, and liability reviews in PDF and JSON/XML formats. UTC-standardised throughout for cross-border legal consistency.</div>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-icon">📡</div>
+      <div>
+        <div class="platform-title"><span class="no-break">Multi-Constellation</span> Positioning & Connectivity Resilience</div>
+        <div class="platform-desc">Simultaneously utilises GPS, Galileo, and GLONASS for location reliability in challenging terrain. Burst Sync Architecture: data is stored locally and synchronises upon signal return. Designed for Satellite <span class="no-break">Direct-to-Cell</span> (D2C) readiness — when carrier-enabled satellite D2C coverage is available on a volunteer's device, the platform inherits it transparently with no rebuild required. Thermal throttling at 40°C+ prevents hardware shutdown.</div>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-icon">⊞</div>
+      <div>
+        <div class="platform-title">Probabilistic Search Engine & Golden Co-ordinate Protocol</div>
+        <div class="platform-desc">Each incident loads a Subject Profile and the engine calculates a Probability of Area (POA) score per sector, based on last known point, terrain type, and time elapsed since last contact. Sectors are colour-coded dynamically. Clue integration continuously redistributes probability without manual intervention. Advisory only — the coordinator may override at any time.<br><br>At incident closure, the platform mandates capture of the Golden Co-ordinate — the verified location at which the subject was found. Subject State Metadata and Discovery Method tagging are logged, feeding an ML pipeline that iteratively calibrates the probabilistic models against ground-truth data. Each deployment makes the engine more accurate.</div>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-icon">◈</div>
+      <div>
+        <div class="platform-title">Modular Subject Profile Libraries</div>
+        <div class="platform-desc">Proprietary data modules — each a structured dataset of behaviour parameters, travel distance distributions, terrain preference weightings, and time-decay curves. Libraries are loaded into the Probabilistic Scoring Engine at runtime based on the organisation's unlocked library set. The engine is grounded in established Lost Person Behaviour research. Adding a new library post-launch requires only a new data module — no platform rebuild. The architecture supports modular behavioural datasets to be developed and unlocked progressively beyond the MVP, with the full library purchase flow activated in Phase 3.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- STRUCTURAL DIFFERENTIATORS -->
+<div class="section-wrap dark">
+  <div class="section-inner">
+    <div class="section-label">Structural Differentiators</div>
+    <h2 class="section-title">What GRIDSEARCH combines.</h2>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <span class="diff-badge">Global First</span>
+        <div class="diff-title">Modular Subject Profile Libraries</div>
+        <div class="diff-body">No SAR platform has ever applied probabilistic scoring beyond human subjects. GRIDSEARCH extends the same engine to a proprietary library of non-human subject profiles — to be developed progressively beyond the MVP. This directly serves segments — canine rescue, wildlife response, agricultural search — that have never had purpose-built <span class="no-break">co-ordination</span> software.</div>
+      </div>
+      <div class="diff-card">
+        <span class="diff-badge">By Architecture</span>
+        <div class="diff-title">Telemetry Hard-Cut & Volunteer Privacy</div>
+        <div class="diff-body">Every other platform tracks users for as long as the session runs with no automatic cutoff. GRIDSEARCH severs GPS telemetry the instant a volunteer presses End Search. Identity data and GPS tracks are stored in siloed, encrypted tables, linked only by an anonymous ID. This is an architectural enforcement — not a configurable setting. The only platform a privacy-conscious volunteer organisation can adopt without legal exposure.</div>
+      </div>
+      <div class="diff-card">
+        <span class="diff-badge">Day One</span>
+        <div class="diff-title">Court-Admissible Audit Trail</div>
+        <div class="diff-body">Every professional SAR platform has this. No volunteer tool does. GRIDSEARCH includes it from the MVP — immutable, hash-verified, UTC-standardised, and structured for legal proceedings. When a search ends in a fatality or inquest, the organisation has a complete, tamper-evident record. Structured for export in formats meeting agency handover requirements at Phase 3.</div>
+      </div>
+      <div class="diff-card">
+        <span class="diff-badge">Unique</span>
+        <div class="diff-title">Family & Owner Transparency View</div>
+        <div class="diff-body">Every professional tool excludes families by design. Every volunteer tool provides no structured view at all. GRIDSEARCH gives families and animal owners a read-only map showing verified search coverage — the documented answer to the question they are asking. Access is revoked automatically when the session ends. No access to volunteer identities or internal reports at any point.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETITIVE TABLE -->
+<div class="section-wrap">
+  <div class="section-label">Competitive Position</div>
+  <h2 class="section-title">The capability gap in plain language.</h2>
+  <div class="table-scroll">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Professional SAR</th>
+          <th>Volunteer Tools</th>
+          <th class="gs-col">GRIDSEARCH</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Purpose-built for community search</td>
+          <td><span class="cross">✕</span> Enterprise only</td>
+          <td><span class="cross">✕</span> Wrong purpose</td>
+          <td class="gs-col"><span class="gs">✓</span> Built for this</td>
+        </tr>
+        <tr>
+          <td>Zero training required</td>
+          <td><span class="cross">✕</span> Requires certification</td>
+          <td><span class="tick">✓</span> Basic</td>
+          <td class="gs-col"><span class="gs">✓</span> By design</td>
+        </tr>
+        <tr>
+          <td>Live <span class="no-break">co-ordination</span> tracking</td>
+          <td><span class="tick">✓</span> Yes</td>
+          <td><span class="cross">✕</span> No</td>
+          <td class="gs-col"><span class="gs">✓</span> Real-time, verified</td>
+        </tr>
+        <tr>
+          <td>Probabilistic search scoring</td>
+          <td><span class="tick">✓</span> Human only</td>
+          <td><span class="cross">✕</span> No</td>
+          <td class="gs-col"><span class="gs">✓</span> Human + animal</td>
+        </tr>
+        <tr>
+          <td>Volunteer safety monitoring</td>
+          <td>Partial</td>
+          <td><span class="cross">✕</span> No</td>
+          <td class="gs-col"><span class="gs">✓</span> Fall detect + SOS</td>
+        </tr>
+        <tr>
+          <td>Telemetry Hard-Cut — Privacy Enforcement</td>
+          <td><span class="cross">✕</span> No</td>
+          <td><span class="cross">✕</span> No</td>
+          <td class="gs-col"><span class="gs">✓</span> Architectural</td>
+        </tr>
+        <tr>
+          <td><span class="no-break">Court-Admissible</span> Audit Trail</td>
+          <td>Manual logs only</td>
+          <td><span class="cross">✕</span> None</td>
+          <td class="gs-col"><span class="gs">✓</span> Day one — immutable hash</td>
+        </tr>
+        <tr>
+          <td>Modular Subject Profile Libraries</td>
+          <td><span class="cross">✕</span> None</td>
+          <td><span class="cross">✕</span> None</td>
+          <td class="gs-col"><span class="gs">✓</span> Phase 3 unlock</td>
+        </tr>
+        <tr>
+          <td>Family transparency view</td>
+          <td><span class="cross">✕</span> Excluded by design</td>
+          <td><span class="cross">✕</span> No</td>
+          <td class="gs-col"><span class="gs">✓</span> Read-only map</td>
+        </tr>
+        <tr>
+          <td>Shift handover mechanic</td>
+          <td>Basic</td>
+          <td><span class="cross">✕</span> No</td>
+          <td class="gs-col"><span class="gs">✓</span> Auto briefing packet</td>
+        </tr>
+        <tr>
+          <td>Satellite D2C Readiness</td>
+          <td><span class="cross">✕</span> No known roadmap</td>
+          <td><span class="cross">✕</span> No known roadmap</td>
+          <td class="gs-col"><span class="gs">✓</span> Architected for Phase 3</td>
+        </tr>
+        <tr>
+          <td>Realistic for volunteer budgets</td>
+          <td><span class="cross">✕</span> Enterprise pricing</td>
+          <td><span class="tick">✓</span> Free / low cost</td>
+          <td class="gs-col"><span class="gs">✓</span> Built for this segment</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ROADMAP — Section 10, verbatim from Blueprint -->
+<div class="section-wrap dark">
+  <div class="section-inner">
+    <div class="section-label">Development Roadmap — Section 10, Master Blueprint 31.03.26</div>
+    <h2 class="section-title">Four phases. Milestone-driven.</h2>
+    <p class="section-body">Master Build Specification complete. MVP feature set defined.<br><span class="no-break">Pilot partner committed.</span><br><span style="color:var(--orange);">Phase 1 development is pending seed investment.</span></p>
+    <div class="roadmap-grid">
+
+      <div class="phase-card active">
+        <div class="phase-label">Phase 1 — MVP</div>
+        <div class="phase-title">Operational Core</div>
+        <ul class="phase-items">
+          <li>Incident creation and map tracking</li>
+          <li>Safety monitoring and offline mode</li>
+          <li><span class="no-break">Court-Admissible</span> Audit Trail</li>
+        </ul>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-label">Phase 2 — Growth</div>
+        <div class="phase-title">Intelligence Layer</div>
+        <ul class="phase-items">
+          <li>Search analytics and hazard prediction</li>
+          <li>QR waiting rooms</li>
+        </ul>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-label">Phase 3 — Scale</div>
+        <div class="phase-title">Agency & International</div>
+        <ul class="phase-items">
+          <li>Modular Subject Profile Library unlock</li>
+          <li>International expansion</li>
+          <li>Satellite D2C readiness</li>
+        </ul>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-label">Phase 4 — Disaster</div>
+        <div class="phase-title">Community Resilience</div>
+        <ul class="phase-items">
+          <li>Community disaster response — floods and wildfires</li>
+          <li><span class="no-break">Multi-session</span> <span class="no-break">co-ordination</span> under infrastructure failure</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TRACTION -->
+<div class="section-wrap">
+  <div class="section-label">Traction & Validation</div>
+  <h2 class="section-title">Foundation in place.</h2>
+  <div class="traction-grid">
+
+    <div class="traction-card">
+      <div class="traction-icon">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="32" height="32" rx="2" stroke="#E8821A" stroke-width="1.5"/>
+          <path d="M7 17h6M21 17h6M14 10l3 7 3-7" stroke="#E8821A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="17" cy="17" r="3" stroke="#E8821A" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="traction-head">Technical</div>
+      <div class="traction-body">Master Build Specification complete across 17 sections. Every architectural decision, product feature, data governance requirement, and commercial model documented to an authoritative build standard. MVP feature set defined.</div>
+    </div>
+
+    <div class="traction-card">
+      <div class="traction-icon">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 2L3 8v9c0 8 5.5 13.5 14 14.5C25.5 30.5 31 25 31 17V8L17 2z" stroke="#E8821A" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M11 17l4 4 8-8" stroke="#E8821A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="traction-head">Legal & Infrastructure</div>
+      <div class="traction-body">Isle of Man domicile. Primary data residency based in the Isle of Man, with regional points of presence available to meet local data residency requirements as the platform scales globally.</div>
+    </div>
+
+    <div class="traction-card">
+      <div class="traction-icon">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="17" cy="17" r="14" stroke="#E8821A" stroke-width="1.5"/>
+          <path d="M17 3c0 0-6 5.5-6 14s6 14 6 14M17 3c0 0 6 5.5 6 14s-6 14-6 14M3 17h28" stroke="#E8821A" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="traction-head">Market</div>
+      <div class="traction-body">Phase 1 pilot partner committed. Real-world deployment will establish the first operational record, the first court-admissible audit trail, and the first verified coverage dataset from day one of launch.</div>
+    </div>
+
+  </div>
+
+  <div class="financials-note">
+    <div class="financials-note-label">Financial Projections</div>
+    <div class="financials-note-text">Financial projections are currently in development and will be made available to verified investors in due course. When complete, they will be incorporated into an updated version of the investor deck. Verified investors will be notified directly.</div>
+  </div>
+</div>
+
+<!-- DATA SECURITY -->
+<div class="section-wrap dark">
+  <div class="section-inner">
+    <div class="section-label">Data Governance & Jurisdiction</div>
+    <h2 class="section-title">Secure, Sovereign Isle of Man Data Domicile.</h2>
+    <p class="section-body">GRIDSEARCH is architected from day one to meet global data residency requirements without requiring a change of primary infrastructure provider.</p>
+    <div class="security-grid">
+      <div class="security-card">
+        <div class="security-head">Residency & Compliance</div>
+        <div class="security-body">The Secure, Sovereign Isle of Man Data Domicile is the intended primary data residency jurisdiction, subject to review as the platform expands into new markets. Where local data residency legislation or operational volume requires it, regional points of presence in other jurisdictions will be deployed without requiring a change of primary provider.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-head">Data Architecture</div>
+        <div class="security-body">Identity data and GPS tracks are siloed in separate, encrypted tables, linked only by an anonymous ID. No personal data is retained past the organisation's defined retention period. Only anonymised metadata is used for system improvement.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DUE DILIGENCE PACK -->
+<div class="section-wrap" id="due-diligence">
+  <div class="section-label">Due Diligence Documents</div>
+  <h2 class="section-title">Post-NDA downloadables.</h2>
+  <p class="section-body">All documents are provided under the terms of your signed Non-Disclosure Agreement. Not for distribution. Download links will be activated as each document is finalised.</p>
+
+
+  <div class="ddp-grid">
+
+    <div class="ddp-card">
+      <div class="ddp-number">01</div>
+      <div class="ddp-subtitle">Pitch Deck</div>
+      <div class="ddp-title">Strategic Vision & World Market Potential</div>
+      <div class="ddp-desc">The full GRIDSEARCH investment presentation — platform overview, market opportunity, structural differentiators, competitive position, four-phase roadmap, and the ask. An updated version incorporating financial projections will be issued in due course. Verified investors will be notified on release.</div>
+      <div class="ddp-status">Coming shortly</div>
+      <a href="#" class="btn-download disabled" aria-disabled="true" onclick="return false;">
+        <span>↓</span> Download Deck
+      </a>
+    </div>
+
+    <div class="ddp-card">
+      <div class="ddp-number">02</div>
+      <div class="ddp-subtitle">Comparative Analysis</div>
+      <div class="ddp-title">GRIDSEARCH vs. Informal Tools</div>
+      <div class="ddp-desc">A full capability comparison against the current status quo — WhatsApp groups, paper maps, consumer GPS, and volunteer dispatch tools. Documents why GRIDSEARCH is the only purpose-built <span class="no-break">co-ordination</span> solution for community-led search, and why the existing tools are structurally incapable of serving this segment.</div>
+      <div class="ddp-status">Coming shortly</div>
+      <a href="#" class="btn-download disabled" aria-disabled="true" onclick="return false;">
+        <span>↓</span> Download Analysis
+      </a>
+    </div>
+
+    <div class="ddp-card">
+      <div class="ddp-number">03</div>
+      <div class="ddp-subtitle">Equity Summary</div>
+      <div class="ddp-title">Fully Diluted Cap Table</div>
+      <div class="ddp-desc">Fully diluted equity summary including founder vesting schedule, adviser pool allocations, Tech Lead equity provision, and unallocated option pool. Reflects the HoldCo / OpCo structure with current ownership percentages and vesting conditions across all active and prospective equity holders.</div>
+      <div class="ddp-status">Coming shortly</div>
+      <a href="#" class="btn-download disabled" aria-disabled="true" onclick="return false;">
+        <span>↓</span> Download Cap Table
+      </a>
+    </div>
+
+    <div class="ddp-card">
+      <div class="ddp-number">04</div>
+      <div class="ddp-subtitle">Additional Document</div>
+      <div class="ddp-title">To Be Confirmed</div>
+      <div class="ddp-desc">Additional documents will be added in due course. Verified investors will be notified on release.</div>
+      <div class="ddp-status">Coming shortly</div>
+      <a href="#" class="btn-download disabled" aria-disabled="true" onclick="return false;">
+        <span>↓</span> Coming Shortly
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- TEAM -->
+<div class="section-wrap dark">
+  <div class="section-inner">
+    <div class="section-label">Founder</div>
+    <h2 class="section-title">Built from the field. Not from a desk.</h2>
+    <div class="team-row">
+      <div class="team-photo">
+        <img src="https://strategic-mind.sirv.com/Gridsearch/SC.png" alt="Stephanie Cloris — Founder & Operational Architect, GRIDSEARCH">
+      </div>
+      <div>
+        <div class="team-name">Stephanie Cloris</div>
+        <div class="team-role">Founder &amp; Operational Architect</div>
+        <p class="team-bio">GRIDSEARCH was designed from operational experience in community search and rescue. Every architectural decision — from the telemetry hard-cut to the animal behaviour library — exists because a search co-ordinator or field volunteer needed it. The platform was not adapted from an existing tool. It was built from the ground up to solve a problem that has existed since community search began.</p>
+        <div class="team-contact">
+          <div class="team-contact-item">
+            <span class="contact-label">Email</span>
+            <a class="contact-value" href="mailto:investors@gridsearch.io">investors@gridsearch.io</a>
+          </div>
+          <div class="team-contact-item">
+            <span class="contact-label">Phone</span>
+            <a class="contact-value" href="tel:+441624316646">+44 (0)7624 316646</a>
+          </div>
+          <div class="team-contact-item">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Isle of Man</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FOOTER -->
+<div class="cta-wrap">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-title" style="text-wrap:balance;">Ready to talk.</h2>
+      <p class="cta-sub" style="white-space:nowrap;">For investment enquiries or follow-up questions, get in touch directly.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="mailto:investors@gridsearch.io?subject=Investment%20Enquiry%20%E2%80%94%20GRIDSEARCH" class="btn-primary">Get in Touch</a>
+      <a href="https://gridsearch.io" target="_blank" rel="noopener" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);text-decoration:none;margin-top:4px;">&#8592; Public Site</a>
+    </div>
+  </div>
+  <div class="confidential-bar">
+    <span>GRIDSEARCH &copy; 2026</span>
+    <span class="highlight">Confidential &mdash; Not for Distribution</span>
+    <span>Isle of Man</span>
+  </div>
+  <div style="border-top:1px solid var(--rule);padding:14px 48px;max-width:1200px;margin:0 auto;text-align:right;">
+    <span style="font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rule);">Created by <a href="https://www.strategic-mind.consulting" target="_blank" rel="noopener" style="color:var(--grey);text-decoration:none;" onmouseover="this.style.color='#E8821A'" onmouseout="this.style.color='var(--grey)'">Strategic Mind Consulting</a></span>
+  </div>
+</div>
+
+</body>
+</html>
