@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRIDSEARCH — unified rescue coordination</title>
+<meta http-equiv="refresh" content="15;url=https://gridsearch.io">
+<script>setTimeout(function(){ window.location.replace('https://gridsearch.io'); }, 15000);</script>
+<title>You're on the list — GRIDSEARCH</title>
+<meta name="robots" content="noindex, nofollow">
 
-<meta property="og:title" content="GRIDSEARCH — unified rescue coordination">
-<meta property="og:description" content="The first purpose-built coordination platform for community-led search.">
-<meta property="og:image" content="https://strategic-mind.sirv.com/Gridsearch/quinn-aebi-XZ46vmjgFJA-unsplash.jpg">
-<meta property="og:url" content="https://gridsearch.io">
-
-<!-- Hero image: Photo by Quinn Aebi on Unsplash
-     https://unsplash.com/photos/a-forest-filled-with-lots-of-tall-trees-XZ46vmjgFJA
-     Free to use under the Unsplash License -->
-
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800;900&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
   @font-face {
@@ -25,74 +19,36 @@
     font-display: swap;
   }
 
-
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --navy:       #0B1623;
-    --navy-mid:   #112033;
-    --navy-light: #1A2F45;
-    --orange:     #E8821A;
-    --orange-dim: #C46D10;
-    --white:      #F4F2EE;
-    --grey:       #8A9BAD;
-    --rule:       #1E3248;
+    --navy:     #0B1623;
+    --navy-mid: #112033;
+    --orange:   #E8821A;
+    --white:    #F4F2EE;
+    --grey:     #8A9BAD;
+    --rule:     #1E3248;
   }
 
-  html { scroll-behavior: smooth; }
-  body {
+  html, body {
     background: var(--navy);
     color: var(--white);
     font-family: 'Barlow', sans-serif;
     font-weight: 400;
-    overflow-x: hidden;
+    min-height: 100vh;
   }
 
-  /* ── Typography globals ── */
-  h1, h2, h3 { text-wrap: balance; }
-
-  p.body-text, .section-body, .problem-sub,
-  .pillar-desc, .who-desc, .status-body,
-  .founder-bio, .footer-sub, .modal-sub {
-    max-width: 60ch;
-  }
-
-  /* ─────────────────────────────
-     HERO
-  ───────────────────────────── */
-  .hero {
-    position: relative;
-    height: 100vh;
-    min-height: 640px;
+  body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
+    padding: 60px 24px 100px;
     text-align: center;
-    overflow: hidden;
   }
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(to bottom,
-        rgba(11,22,35,0.30) 0%,
-        rgba(11,22,35,0.62) 52%,
-        rgba(11,22,35,1.00) 100%),
-      url('https://strategic-mind.sirv.com/Gridsearch/quinn-aebi-XZ46vmjgFJA-unsplash.jpg')
-      center/cover no-repeat;
-    z-index: 0;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 820px;
-    padding: 0 32px;
-    animation: fadeUp 1.1s ease both;
-  }
-
-  /* Wordmark — clean sans-serif, no logo image */
+  /* ── Wordmark — matches hero exactly ── */
   .wordmark {
     font-family: 'Garet', 'Barlow Condensed', sans-serif;
     font-weight: 900;
@@ -101,1162 +57,145 @@
     line-height: 1;
     color: var(--white);
     text-transform: uppercase;
-    text-wrap: balance;
+    display: block;
+    margin-bottom: 18px;
+    text-decoration: none;
   }
 
+  /* ── Tagline — matches hero exactly ── */
   .tagline {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 400;
-    font-size: clamp(13px, 2vw, 18px);
+    font-size: clamp(13px, 2vw, 16px);
     letter-spacing: 6px;
     text-transform: lowercase;
     color: var(--grey);
-    margin-top: 10px;
+    margin-bottom: 28px;
   }
 
+  /* ── Orange divider — matches hero ── */
   .hero-divider {
     width: 48px;
     height: 2px;
     background: var(--orange);
-    margin: 30px auto;
+    margin: 0 auto 40px;
   }
 
-  .hero-headline {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: clamp(13px, 1.55vw, 20px);
-    color: var(--white);
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-    line-height: 1.5;
-  }
-
-  .hero-statement {
-    font-size: clamp(14px, 1.6vw, 17px);
-    font-weight: 300;
-    line-height: 1.75;
-    color: var(--white);
-    opacity: 0.80;
-    max-width: 56ch;
-    margin: 0 auto 44px;
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 36px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    opacity: 0.35;
-    animation: fadeUp 1.4s 0.6s ease both;
-  }
-  .scroll-line {
-    width: 1px; height: 40px;
-    background: var(--white);
-    animation: scrollPulse 2.2s infinite;
-  }
-  .hero-scroll span {
-    font-size: 9px; letter-spacing: 4px;
-    text-transform: uppercase;
-    font-family: 'Barlow Condensed', sans-serif;
-  }
-
-  /* ─────────────────────────────
-     BUTTONS
-  ───────────────────────────── */
-  .btn-primary {
-    display: inline-block;
-    background: var(--orange);
-    color: var(--white);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 16px 40px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-    line-height: 1;
-  }
-  .btn-primary:hover { background: var(--orange-dim); }
-
-  .btn-ghost {
-    display: inline-block;
-    background: transparent;
-    color: var(--white);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 15px 40px;
-    text-decoration: none;
-    border: 1px solid rgba(244,242,238,0.28);
-    cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
-    line-height: 1;
-  }
-  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
-
-  /* ─────────────────────────────
-     SHARED LAYOUT
-  ───────────────────────────── */
-  .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
-
-  .section-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 18px;
-  }
-
-  .section-title {
+  /* ── Heading — smaller, not hero-scale ── */
+  h1 {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: clamp(32px, 4.5vw, 50px);
-    line-height: 1.05;
+    font-size: clamp(22px, 3vw, 30px);
     text-transform: uppercase;
     color: var(--white);
-    margin-bottom: 20px;
-  }
-
-  .section-body {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--grey);
-  }
-
-  /* ─────────────────────────────
-     MISSION STRIP
-  ───────────────────────────── */
-  .mission-wrap {
-    background: var(--orange);
-    padding: 40px 32px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .mission-text {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(18px, 2.6vw, 27px);
-    letter-spacing: 1px;
-    color: var(--navy);
-    max-width: 920px;
-    margin: 0 auto;
-    line-height: 1.55;
-    text-align: center;
-  }
-
-  /* ─────────────────────────────
-     PROBLEM
-  ───────────────────────────── */
-  .problem-wrap { background: var(--navy-mid); }
-  .problem-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 88px 32px;
-  }
-  .problem-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    margin-top: 48px;
-    align-items: start;
-  }
-  .problem-intro-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 16px;
-  }
-  .problem-quote {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(20px, 2.6vw, 28px);
-    font-weight: 700;
-    line-height: 1.35;
-    color: var(--white);
-    border-left: 3px solid var(--orange);
-    padding-left: 24px;
-    margin-bottom: 24px;
-    text-wrap: balance;
-  }
-  .problem-sub {
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.78;
-    color: var(--grey);
-  }
-  .problem-kit-tag {
-    display: inline-block;
-    margin-top: 20px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--navy);
-    background: var(--orange);
-    padding: 7px 14px;
-  }
-  .problem-list { list-style: none; display: flex; flex-direction: column; gap: 2px; text-align: left; width: 100%; }
-  .problem-item {
-    background: var(--navy-light);
-    padding: 24px 28px;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .problem-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
-    font-weight: 900;
-    color: var(--orange);
-    line-height: 1;
-    min-width: 32px;
-    margin-top: 2px;
-    text-align: left;
-  }
-  .problem-item-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--white);
-    margin-bottom: 6px;
-    text-align: left;
-  }
-  .problem-item-desc {
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.65;
-    color: var(--grey);
-    max-width: 52ch;
-    text-align: left;
-  }
-
-  /* ─────────────────────────────
-     PILLARS
-  ───────────────────────────── */
-  .pillars-wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 88px 32px;
-  }
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-top: 48px;
-  }
-  .pillar {
-    background: var(--navy-light);
-    padding: 40px 28px;
-    position: relative;
-    overflow: hidden;
-  }
-  .pillar::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--orange);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s ease;
-  }
-  .pillar:hover::before { transform: scaleX(1); }
-  .pillar-icon { font-size: 24px; margin-bottom: 18px; display: block; line-height: 1; }
-  .pillar-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--white);
-    margin-bottom: 10px;
-    line-height: 1.2;
+    margin-bottom: 20px;
     text-wrap: balance;
   }
-  .pillar-desc {
-    font-size: 14px;
+
+  /* ── Body text ── */
+  .body-text {
+    font-size: clamp(14px, 1.8vw, 16px);
     font-weight: 300;
-    line-height: 1.72;
-    color: var(--grey);
+    line-height: 1.85;
+    color: var(--white);
+    opacity: 0.82;
+    max-width: 48ch;
+    margin: 0 auto 24px;
+    text-wrap: balance;
   }
 
-  /* Full-width hero pillar — third row spanning all 3 columns */
-  .pillar-hero {
-    grid-column: 1 / -1;
-    background: var(--navy-light);
-    border: none;
-    border-top: 3px solid var(--orange);
-    padding: 48px 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    gap: 16px;
-  }
-  .pillar-hero::after {
-    content: 'Decision Support System';
-    position: absolute;
-    top: 18px;
-    right: 28px;
+  /* ── Countdown ── */
+  .redirect-text {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--orange);
-    opacity: 0.7;
-  }
-  .pillar-hero .pillar-icon {
-    font-size: 32px;
-    margin-bottom: 4px;
-    margin-top: 0;
-  }
-  .pillar-hero .pillar-title {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-  .pillar-hero .pillar-desc {
-    font-size: 15px;
-    max-width: 90ch;
-    margin: 0 auto;
-    line-height: 1.8;
+    color: var(--grey);
+    margin-bottom: 12px;
+    opacity: 0.6;
   }
 
-  /* ─────────────────────────────
-     WHO IT'S FOR
-  ───────────────────────────── */
-  .who-wrap { background: var(--navy-mid); }
-  .phase-badge {
-    display: inline-block;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--navy);
-    background: var(--orange);
-    padding: 3px 8px;
-    margin-bottom: 10px;
-  }
-  .who-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 88px 32px;
-  }
-  .who-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    margin-top: 48px;
-  }
-  .who-card {
-    background: var(--navy-light);
-    padding: 32px 24px;
-    text-align: center;
-  }
-  .who-icon { font-size: 28px; margin-bottom: 16px; display: block; }
-  .who-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--white);
-    margin-bottom: 10px;
-    text-wrap: balance;
-  }
-  .who-desc { font-size: 13px; font-weight: 300; line-height: 1.65; color: var(--grey); }
-
-  /* ─────────────────────────────
-     STATUS
-  ───────────────────────────── */
-  .status-wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 88px 32px;
-  }
-  .status-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    margin-top: 48px;
-  }
-  .status-card { background: var(--navy-light); padding: 40px 32px; }
-  .status-card.highlight { background: var(--orange); }
-  .status-head {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 14px;
-  }
-  .status-card.highlight .status-head { color: var(--navy); opacity: 1; font-weight: 900; font-size: 13px; }
-  .status-body { font-size: 15px; font-weight: 300; line-height: 1.78; color: var(--white); }
-  .status-card.highlight .status-body { color: var(--navy); font-weight: 500; }
-
-  /* ─────────────────────────────
-     FOUNDER
-  ───────────────────────────── */
-  .founder-wrap { background: var(--navy-mid); }
-  .founder-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 88px 32px;
-  }
-  .founder-row {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 56px;
-    align-items: start;
-    margin-top: 48px;
-  }
-  .founder-photo {
+  .countdown-bar-wrap {
     width: 180px;
-    height: 220px;
-    background: var(--navy-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: 3px solid var(--orange);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--grey);
-    text-transform: uppercase;
+    height: 2px;
+    background: var(--rule);
+    margin: 0 auto;
     overflow: hidden;
   }
-  .founder-photo img { width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block; }
-  .founder-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 34px;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: var(--white);
-    margin-bottom: 4px;
-  }
-  .founder-role {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 20px;
-  }
-  .founder-bio {
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.82;
-    color: var(--grey);
-    margin-bottom: 32px;
+
+  .countdown-bar {
+    height: 100%;
+    width: 100%;
+    background: var(--orange);
+    transform-origin: left;
+    animation: shrink 15s linear forwards;
   }
 
-  /* Vertical contact list */
-  .founder-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-top: 1px solid var(--rule);
-    padding-top: 24px;
+  @keyframes shrink {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0); }
   }
-  .founder-contact-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .contact-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--grey);
-    min-width: 64px;
-  }
-  .contact-value {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: var(--white);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .contact-value:hover { color: var(--orange); }
 
-  /* ─────────────────────────────
-     FOOTER
-  ───────────────────────────── */
-  .footer-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 88px 32px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 48px;
-    align-items: center;
-  }
-  .footer-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(32px, 4vw, 52px);
-    text-transform: uppercase;
-    color: var(--white);
-    line-height: 1.05;
-    margin-bottom: 12px;
-    text-wrap: balance;
-  }
-  .footer-sub { font-size: 15px; font-weight: 300; color: var(--grey); }
-  .footer-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-width: 240px;
-    align-items: flex-end;
-  }
-  .confidential {
+  /* ── Footer ── */
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     border-top: 1px solid var(--rule);
-    padding: 24px 32px;
-    max-width: 1080px;
-    margin: 0 auto;
+    padding: 16px 32px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    background: var(--navy);
   }
-  .confidential span {
+
+  footer span {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--rule);
   }
-
-  /* ─────────────────────────────
-     MODAL
-  ───────────────────────────── */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(7,13,21,0.92);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    backdrop-filter: blur(4px);
-  }
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal {
-    background: var(--navy-mid);
-    border-top: 3px solid var(--orange);
-    max-width: 580px;
-    width: 100%;
-    padding: 52px 48px;
-    position: relative;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-  .modal-overlay.open .modal { transform: translateY(0); }
-  .modal-close {
-    position: absolute;
-    top: 20px; right: 24px;
-    background: none; border: none;
-    color: var(--grey); font-size: 22px;
-    cursor: pointer; line-height: 1;
-    transition: color 0.2s;
-  }
-  .modal-close:hover { color: var(--white); }
-  .modal-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 4px; text-transform: uppercase;
-    color: var(--orange); margin-bottom: 12px;
-  }
-  .modal-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800; font-size: 32px;
-    text-transform: uppercase; color: var(--white);
-    line-height: 1.1; margin-bottom: 10px;
-    text-wrap: balance;
-  }
-  .modal-sub {
-    font-size: 14px; font-weight: 300;
-    line-height: 1.72; color: var(--grey);
-    margin-bottom: 36px;
-  }
-
-  /* FORM */
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-  .form-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 12px; }
-  .form-field.half { margin-bottom: 0; }
-  .form-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: var(--grey);
-  }
-  .required { color: var(--orange); margin-left: 3px; }
-  .form-input, .form-select {
-    background: var(--navy-light);
-    border: 1px solid var(--rule);
-    border-bottom: 2px solid var(--rule);
-    color: var(--white);
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px; font-weight: 300;
-    padding: 13px 16px;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-    appearance: none; -webkit-appearance: none;
-  }
-  .form-input::placeholder { color: var(--grey); opacity: 0.5; }
-  .form-input:focus, .form-select:focus { border-color: var(--orange); border-bottom-color: var(--orange); }
-  .form-select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9BAD' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 40px; cursor: pointer;
-  }
-  .form-select option { background: var(--navy-mid); color: var(--white); }
-  .form-note { font-size: 12px; font-weight: 300; color: var(--grey); opacity: 0.7; margin-top: 4px; }
-  .form-divider { border: none; border-top: 1px solid var(--rule); margin: 28px 0; }
-  .form-submit {
-    width: 100%;
-    background: var(--orange); color: var(--white);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700; font-size: 14px;
-    letter-spacing: 3px; text-transform: uppercase;
-    padding: 18px 32px;
-    border: none; cursor: pointer;
-    transition: background 0.2s; margin-top: 8px;
-  }
-  .form-submit:hover { background: var(--orange-dim); }
-
-  /* SUCCESS */
-  .form-success { display: none; text-align: center; padding: 40px 0; }
-  .form-success.visible { display: block; }
-  .success-icon { font-size: 48px; margin-bottom: 20px; display: block; color: var(--orange); }
-  .success-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 30px; font-weight: 800;
-    text-transform: uppercase; color: var(--white); margin-bottom: 14px;
-  }
-  .success-body { font-size: 15px; font-weight: 300; line-height: 1.75; color: var(--grey); max-width: 40ch; margin: 0 auto; }
-  .success-close {
-    display: inline-block; margin-top: 32px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: var(--orange); cursor: pointer;
-    background: none; border: none; transition: opacity 0.2s;
-  }
-  .success-close:hover { opacity: 0.7; }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes scrollPulse {
-    0%,100% { opacity: 0.3; }
-    50%     { opacity: 0.9; }
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 860px) {
-    .problem-cols   { grid-template-columns: 1fr; gap: 40px; text-align: left; }
-    .problem-list   { text-align: left; width: 100%; }
-    .problem-item   { text-align: left; width: 100%; box-sizing: border-box; }
-    .pillars-grid   { grid-template-columns: 1fr 1fr; }
-    .who-grid       { grid-template-columns: 1fr 1fr; }
-    .status-cols    { grid-template-columns: 1fr; }
-    .founder-row    { grid-template-columns: 1fr; }
-    .founder-photo  { width: 100%; height: 200px; }
-    .footer-inner   { grid-template-columns: 1fr; }
-    .footer-actions { align-items: flex-start; }
-  }
-  @media (max-width: 560px) {
-    .pillars-grid { grid-template-columns: 1fr; }
-    .who-grid     { grid-template-columns: 1fr 1fr; }
-    .hero-ctas    { flex-direction: column; align-items: center; }
-    .form-row     { grid-template-columns: 1fr; }
-    .modal        { padding: 40px 24px; }
-  }
 </style>
-
-<!-- CookieScript — loads first to manage consent -->
-<script type="text/javascript" charset="UTF-8"
-  src="//cdn.cookie-script.com/s/f5b936c0b7af46db54283a769cbe0477.js">
-</script>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5QDR6H92');</script>
-
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "vkxesbtbwt");
-</script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QDR6H92"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+  <!-- Logo block — matches hero layout -->
+  <a href="https://gridsearch.io" class="wordmark">GRIDSEARCH</a>
+  <div class="tagline">unified rescue co-ordination</div>
+  <div class="hero-divider"></div>
 
-<!-- ══════════════════════════════
-     HERO
-════════════════════════════════ -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <h1 class="wordmark">GRIDSEARCH</h1>
-    <div class="tagline">unified rescue coordination</div>
-    <div class="hero-divider"></div>
-    <p class="hero-headline">The digital equivalent of a First-Aid Kit for search operations — deployable in seconds, providing the essential structural foundation to manage an incident from initiation to resolution.</p>
-    <p class="hero-statement">GRIDSEARCH stands on its own for the full duration of a search. Where an incident escalates, it allows for seamless, high-integrity data sharing with professional SAR teams.</p>
-    <div class="hero-ctas">
-      <a href="#problem" class="btn-primary">Learn More</a>
-      <a href="mailto:investors@gridsearch.io?subject=Investor%20Access%20Request%20%E2%80%94%20GRIDSEARCH" class="btn-ghost">Request Investor Access</a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</div>
+  <!-- Confirmation -->
+  <h1>Almost there.</h1>
 
-<!-- ══════════════════════════════
-     MISSION STRIP
-════════════════════════════════ -->
-<div class="mission-wrap">
-  <p class="mission-text">
-    GRIDSEARCH IS THE DIGITAL EQUIVALENT OF A FIRST-AID KIT<br>
-    — BUT FOR SEARCH AND RESCUE.<br>
-    DEPLOYABLE IN SECONDS, STRUCTURES SEARCH, REVEALS THE FULL OPERATION.
+  <p class="body-text">
+    You're one step away from joining our mailing list.
   </p>
-</div>
 
-<!-- ══════════════════════════════
-     PROBLEM
-════════════════════════════════ -->
-<div class="problem-wrap" id="problem">
-  <div class="problem-inner">
-    <div class="problem-cols">
-      <div>
-        <div class="problem-intro-label">The Coordination Gap</div>
-        <div class="problem-quote">Moving beyond fragmented informal tools to a unified, structured coordination engine that facilitates complex searches with ease.</div>
-        <p class="problem-sub">Most community-led searches are coordinated without purpose-built tools. GRIDSEARCH is the structured alternative — a coordination engine that provides a holistic view of the operation, simplifying the decision process during highly stressful, time-critical incidents. Deployable in seconds across any device for community-led operations.</p>
-        <span class="problem-kit-tag">Web &nbsp;·&nbsp; iOS &nbsp;·&nbsp; Android</span>
-      </div>
-      <ul class="problem-list">
-        <li class="problem-item">
-          <div class="problem-num">01</div>
-          <div>
-            <div class="problem-item-title">No Verified Coverage</div>
-            <div class="problem-item-desc">Without high-reliability positioning and verified sector tracking, critical areas are missed and ground is duplicated. After the search, there is nothing to review or defend.</div>
-          </div>
-        </li>
-        <li class="problem-item">
-          <div class="problem-num">02</div>
-          <div>
-            <div class="problem-item-title">No Volunteer Safety Net</div>
-            <div class="problem-item-desc">Volunteers work alone in difficult terrain with no fall detection, no inactivity monitoring, and no emergency function watching over them.</div>
-          </div>
-        </li>
-        <li class="problem-item">
-          <div class="problem-num">03</div>
-          <div>
-            <div class="problem-item-title">No Legal Protection</div>
-            <div class="problem-item-desc">When a search ends in an inquest, informal records cannot substitute for a structured, court-admissible audit trail. Organisations have no evidential protection.</div>
-          </div>
-        </li>
-      </ul>
-    </div>
+  <p class="body-text">
+    Your confirmation link is on its way<br>
+    (check spam too).<br>
+    It may take up to 30 minutes.
+  </p>
+
+  <p class="body-text" style="color:var(--orange);opacity:1;font-weight:400;">
+    Click the link to complete your sign-up — this keeps the network trusted and verified.
+  </p>
+
+  <p class="body-text" style="margin-bottom:44px;">
+    Welcome to GRIDSEARCH.
+  </p>
+
+  <p class="redirect-text">You will be returned to the main site in a few seconds...</p>
+  <div class="countdown-bar-wrap">
+    <div class="countdown-bar"></div>
   </div>
-</div>
 
-<hr class="rule">
-
-<!-- ══════════════════════════════
-     SOLUTION PILLARS
-════════════════════════════════ -->
-<div class="pillars-wrap">
-  <div class="section-label">What GRIDSEARCH Does</div>
-  <h2 class="section-title">One platform.<br>Built for the field.</h2>
-  <p class="section-body">A complete coordination engine for community-led search — operable from any device, in any terrain, with no heavy training required. A Decision Support System that provides a holistic view of the operation, simplifying the decision process during highly stressful, time-critical incidents. Coordinators retain full operational authority at all times.</p>
-
-  <div class="pillars-grid">
-
-    <!-- Row 1 -->
-    <div class="pillar">
-      <span class="pillar-icon">⊞</span>
-      <div class="pillar-title">Dynamic Coverage Tracking</div>
-      <div class="pillar-desc">Real-time sector tracking using High-Reliability Global Positioning — utilising redundant location data to ensure maximum accuracy in challenging terrain. Burst Sync architecture ensures data integrity whenever network or satellite connectivity is available.</div>
-    </div>
-    <div class="pillar">
-      <span class="pillar-icon">◉</span>
-      <div class="pillar-title">Volunteer Safety Monitoring</div>
-      <div class="pillar-desc">Fall detection, inactivity alerts, and an SOS emergency button. The Hard-Cut Protocol is an architectural enforcement: GPS tracking is programmatically severed the moment a volunteer presses End Search — not a configurable setting. Total volunteer privacy, by design.</div>
-    </div>
-    <div class="pillar">
-      <span class="pillar-icon">⚖</span>
-      <div class="pillar-title">Court-Admissible Audit Trail</div>
-      <div class="pillar-desc">Every action logged with an immutable, hash-verified timestamp from day one. UTC-standardised for cross-border legal consistency. Structured for legal proceedings, inquests, and agency handover.</div>
-    </div>
-
-    <!-- Row 2 -->
-    <div class="pillar">
-      <span class="pillar-icon">📋</span>
-      <div class="pillar-title">One-Tap Field Reporting</div>
-      <div class="pillar-desc">Sightings, clues, hazards, and assistance requests captured in a single tap — with integrated photo capture and voice-to-text for hands-free reporting. GPS-tagged and timestamped automatically. Utilises an automated client-side compression protocol to ensure the platform remains light and performant during high-volume incidents.</div>
-    </div>
-    <div class="pillar">
-      <span class="pillar-icon">📡</span>
-      <div class="pillar-title">Offline-First &amp; Satellite-Ready</div>
-      <div class="pillar-desc">Purpose-built for environments without reliable signal. Data is stored locally and synchronised automatically whenever connectivity returns. Satellite direct-to-cell compatible by design — no rebuild required.</div>
-    </div>
-    <div class="pillar">
-      <span class="pillar-icon">&#9881;</span>
-      <div class="pillar-title">Optimised Field Interface</div>
-      <div class="pillar-desc">Glove-friendly 64×64 dp touch targets designed for rapid onboarding with no heavy training required. Night and day visual optimisation. Reliable regardless of weather conditions or environment.</div>
-    </div>
-
-    <!-- Row 3 — Full-width centred hero pillar -->
-    <div class="pillar pillar-hero">
-      <span class="pillar-icon">◈</span>
-      <div class="pillar-title">Probabilistic Search Overlays</div>
-      <div class="pillar-desc">A Decision Support System providing coordinators with a holistic view and data-driven prioritisation.<br>Advisory only — the coordinator retains full operational authority at all times.</div>
-    </div>
-
-  </div>
-</div>
-
-<hr class="rule">
-
-<!-- ══════════════════════════════
-     WHO IT'S FOR
-════════════════════════════════ -->
-<div class="who-wrap">
-  <div class="who-inner">
-    <div class="section-label">Behavioural Intelligence</div>
-    <h2 class="section-title">Future-Ready Behavioural Intelligence.</h2>
-    <p class="section-body" style="margin-bottom:32px;">Proprietary data modules grounded in established Lost Person Behaviour research, arriving in Phase 3. Modular Subject Profile Libraries will unlock specialised search behaviours for each organisation type.</p>
-    <div class="who-grid">
-      <div class="who-card">
-        <span class="who-icon">🔍</span>
-        <div class="phase-badge">Phase 1</div>
-        <div class="who-title">Missing Persons SAR</div>
-        <div class="who-desc">Human subject profiles active from Phase 1. Community and volunteer groups coordinating searches for missing people.</div>
-      </div>
-      <div class="who-card">
-        <span class="who-icon">🐕</span>
-        <div class="phase-badge">Phase 3</div>
-        <div class="who-title">Canine Rescue</div>
-        <div class="who-desc">Canine behaviour module unlocked in Phase 3. Dog rescue organisations and canine SAR teams.</div>
-      </div>
-      <div class="who-card">
-        <span class="who-icon">🦅</span>
-        <div class="phase-badge">Phase 3</div>
-        <div class="who-title">Wildlife Rescue</div>
-        <div class="who-desc">Specialist wildlife module unlocked in Phase 3. Charities and responders coordinating injured wildlife searches.</div>
-      </div>
-      <div class="who-card">
-        <span class="who-icon">🏘</span>
-        <div class="phase-badge">Phase 3</div>
-        <div class="who-title">Rural Communities</div>
-        <div class="who-desc">Large animal module unlocked in Phase 3. Councils, farms, and rural authorities managing livestock incidents.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr class="rule">
-
-<!-- ══════════════════════════════
-     STATUS
-════════════════════════════════ -->
-<div class="status-wrap">
-  <div class="section-label">Current Status</div>
-  <h2 class="section-title">Specification complete.<br>Pilot committed.</h2>
-  <div class="status-cols">
-    <div class="status-card">
-      <div class="status-head">Build Specification</div>
-      <div class="status-body">Master Build Specification complete. MVP feature set defined: incident creation, map tracking, safety monitoring, and Court-Admissible Audit Trail. Phase 1 pilot partner committed.</div>
-    </div>
-    <div class="status-card">
-      <div class="status-head">Pilot Partner</div>
-      <div class="status-body">Initial pilot partner committed. Real-world deployment will establish the first operational record and court-admissible audit trail from day one of launch.</div>
-    </div>
-    <div class="status-card">
-      <div class="status-head">Global Architecture</div>
-      <div class="status-body">Architected for global expansion from day one — centralised translation framework for localisation without rebuild, and UTC-standardised audit trails for cross-border legal consistency.</div>
-    </div>
-    <div class="status-card highlight">
-      <div class="status-head">Stage</div>
-      <div class="status-body"><strong style="color:var(--navy);font-weight:900;">Phase 1 — Pilot Committed.</strong><br>Seeking seed investment and strategic partners to take GRIDSEARCH from specification to operational platform.</div>
-    </div>
-  </div>
-</div>
-
-<hr class="rule">
-
-<!-- ══════════════════════════════
-     FOUNDER
-════════════════════════════════ -->
-<div class="founder-wrap">
-  <div class="founder-inner">
-    <div class="section-label">Founder</div>
-    <h2 class="section-title">Built from the field.<br>Not from a desk.</h2>
-    <div class="founder-row">
-      <div class="founder-photo"><img src="https://strategic-mind.sirv.com/Gridsearch/SC.png" alt="Stephanie Cloris — Founder & Operational Architect, GRIDSEARCH"></div>
-      <div>
-        <div class="founder-name">Stephanie Cloris</div>
-        <div class="founder-role">Founder &amp; Operational Architect</div>
-        <p class="founder-bio">GRIDSEARCH was designed from operational experience in community search and rescue. Every feature exists because a search coordinator or field volunteer needed it — not because a product manager put it on a roadmap. The platform was not adapted from an existing tool.</p>
-        <div class="founder-contact">
-          <div class="founder-contact-item">
-            <span class="contact-label">Email</span>
-            <a class="contact-value" href="mailto:ops@gridsearch.io">ops@gridsearch.io</a>
-          </div>
-          <div class="founder-contact-item">
-            <span class="contact-label">Phone</span>
-            <a class="contact-value" href="tel:+441624316646">+44 (0)7624 316646</a>
-          </div>
-          <div class="founder-contact-item">
-            <span class="contact-label">Location</span>
-            <span class="contact-value">Isle of Man</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<hr class="rule">
-
-<!-- ══════════════════════════════
-     FOOTER
-════════════════════════════════ -->
-<!-- FOLLOW THE BUILD — FOOTER FORM SECTION -->
-<div style="background:var(--navy-mid);border-top:1px solid var(--rule);padding:0;">
-  <div style="max-width:1080px;margin:0 auto;padding:80px 32px;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
-
-      <!-- Left: heading + context -->
-      <div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:16px;">Stay Informed</div>
-        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(32px,4vw,52px);text-transform:uppercase;color:var(--white);line-height:1.05;margin-bottom:16px;">Follow<br>the build.</h2>
-        <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--grey);max-width:40ch;">Register to receive updates on the platform build, pilot progress, and launch milestones.</p>
-      </div>
-
-      <!-- Right: Operational Grid Form v3 — reskinned to brand palette -->
-      <div>
-
-<style>
-  .gs-wrap { max-width:620px; padding:0; font-family:'Barlow','Barlow Condensed',sans-serif; }
-  .gs-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
-  .gs-input {
-    background:var(--navy); border:1px solid var(--rule);
-    color:var(--white); padding:0 16px; height:56px;
-    font-size:13px; font-family:'Barlow',sans-serif;
-    border-radius:0; outline:none; width:100%; box-sizing:border-box;
-    transition:border-color 0.15s, background 0.15s;
-  }
-  .gs-input::placeholder { color:var(--grey); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; }
-  .gs-input:focus { border-color:var(--orange); background:var(--navy-mid); }
-  .gs-chip-header { display:flex; align-items:center; justify-content:space-between; margin:16px 0 10px 0; }
-  .gs-chip-label { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--white); }
-  .gs-chip-rule  { font-family:'Barlow Condensed',sans-serif; font-size:10px; color:var(--grey); letter-spacing:0.08em; text-transform:uppercase; }
-  .gs-chip-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:16px; }
-  .gs-chip {
-    height:56px; background:var(--navy); border:1px solid var(--rule); border-radius:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:4px; cursor:pointer; transition:border-color 0.15s, box-shadow 0.15s;
-    padding:8px 6px; text-align:center; user-select:none; -webkit-user-select:none;
-  }
-  .gs-chip:hover { border-color:var(--grey); }
-  .gs-chip.active { border-color:var(--orange); box-shadow:0 0 0 1px var(--orange), 0 0 14px rgba(232,130,26,0.18); }
-  .gs-chip-code { font-family:'Barlow Condensed',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.14em; color:var(--rule); text-transform:uppercase; transition:color 0.15s; }
-  .gs-chip.active .gs-chip-code { color:var(--orange); }
-  .gs-chip-name { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; color:var(--grey); text-transform:uppercase; letter-spacing:0.05em; line-height:1.2; transition:color 0.15s; }
-  .gs-chip.active .gs-chip-name { color:var(--orange); }
-  .gs-divider { border:none; border-top:1px solid var(--rule); margin:16px 0; }
-  .gs-consent {
-    display:flex; align-items:flex-start; gap:12px; margin-bottom:16px;
-    padding:14px 16px; background:var(--navy); border:1px solid var(--rule); border-radius:0;
-  }
-  .gs-consent-check { width:18px; height:18px; margin-top:2px; accent-color:var(--orange); flex-shrink:0; cursor:pointer; }
-  .gs-consent-text { font-family:'Barlow',sans-serif; font-size:11px; color:var(--grey); line-height:1.6; letter-spacing:0.01em; }
-  .gs-consent-text strong { color:var(--white); font-weight:600; }
-  .gs-btn-primary {
-    width:100%; height:56px; background:var(--orange); color:var(--white);
-    border:none; border-radius:0; font-family:'Barlow Condensed',sans-serif;
-    font-size:13px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
-    cursor:pointer; transition:background 0.15s;
-    display:flex; align-items:center; justify-content:center; gap:10px;
-  }
-  .gs-btn-primary:hover { background:var(--orange-dim); }
-  .gs-btn-primary:active { transform:scale(0.99); }
-  .gs-status { display:flex; align-items:center; gap:8px; margin-top:14px; }
-  .gs-status-dot { width:7px; height:7px; border-radius:50%; background:#2a6a2a; border:1px solid #3a8a3a; flex-shrink:0; animation:gs-pulse 2.5s infinite; }
-  @keyframes gs-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
-  .gs-status-text { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--white); }
-  .gs-hp { display:none; }
-  @media(max-width:560px){ .gs-chip-grid{ grid-template-columns:repeat(2,1fr); } .gs-grid-2{ grid-template-columns:1fr; } }
-</style>
-
-<div class="gs-wrap">
-  <form action="https://submit-form.com/ZhtiuMt2A" method="POST" id="gs-form">
-    <input type="hidden" name="_redirect" value="https://gridsearch.io/thanks" />
-    <input type="hidden" name="_append" value="false" />
-    <input class="gs-hp" type="checkbox" name="_honeypot" tabindex="-1" autocomplete="off" />
-    <input type="hidden" name="audience-type" id="gs-audience-value" value="Investor" />
-
-    <div class="gs-grid-2">
-      <input class="gs-input" id="first-name" name="first-name" type="text" placeholder="First Name *" required />
-      <input class="gs-input" id="last-name" name="last-name" type="text" placeholder="Last Name *" required />
-    </div>
-    <div class="gs-grid-2">
-      <input class="gs-input" id="organisation" name="organisation" type="text" placeholder="Company / Organisation *" required />
-      <input class="gs-input" id="country" name="country" type="text" placeholder="Country *" required />
-    </div>
-    <input class="gs-input" id="email" name="email" type="email" placeholder="Email Address *" required style="width:100%;box-sizing:border-box;margin-bottom:10px;" />
-    </div>
-
-    <div class="gs-chip-header">
-      <span class="gs-chip-label">About You</span>
-      <span class="gs-chip-rule">Select one</span>
-    </div>
-
-    <div class="gs-chip-grid" id="gs-chip-grid">
-      <div class="gs-chip active" data-value="Investor" onclick="selectChip(this)">
-        <span class="gs-chip-code">INV</span><span class="gs-chip-name">Investor</span>
-      </div>
-      <div class="gs-chip" data-value="Charity" onclick="selectChip(this)">
-        <span class="gs-chip-code">CHA</span><span class="gs-chip-name">Charities</span>
-      </div>
-      <div class="gs-chip" data-value="Emergency Services" onclick="selectChip(this)">
-        <span class="gs-chip-code">EMS</span><span class="gs-chip-name">Emergency Services</span>
-      </div>
-      <div class="gs-chip" data-value="Volunteer Group" onclick="selectChip(this)">
-        <span class="gs-chip-code">VOL</span><span class="gs-chip-name">Volunteer Group</span>
-      </div>
-      <div class="gs-chip" data-value="Government / Municipality" onclick="selectChip(this)">
-        <span class="gs-chip-code">GOV</span><span class="gs-chip-name">Local Council / Authority</span>
-      </div>
-      <div class="gs-chip" data-value="NGO" onclick="selectChip(this)">
-        <span class="gs-chip-code">NGO</span><span class="gs-chip-name">Aid / Community Org</span>
-      </div>
-      <div class="gs-chip" data-value="Press / Media" onclick="selectChip(this)">
-        <span class="gs-chip-code">MED</span><span class="gs-chip-name">Press / Media</span>
-      </div>
-      <div class="gs-chip" data-value="Other" onclick="selectChip(this)">
-        <span class="gs-chip-code">OTH</span><span class="gs-chip-name">Other</span>
-      </div>
-    </div>
-
-    <hr class="gs-divider" />
-
-    <div class="gs-consent">
-      <input class="gs-consent-check" type="checkbox" id="consent" name="consent" value="yes" required />
-      <label class="gs-consent-text" for="consent">
-        <strong>Data Governance —</strong> I agree to receive GRIDSEARCH updates and understand I can unsubscribe at any time. My data will never be shared.
-      </label>
-    </div>
-
-    <button class="gs-btn-primary" type="submit">Join the List &nbsp;→</button>
-
-    <div class="gs-status">
-      <div class="gs-status-dot"></div>
-      <span class="gs-status-text">Registration Open</span>
-    </div>
-  </form>
-</div>
-
-<script>
-  function selectChip(el) {
-    document.querySelectorAll('.gs-chip').forEach(function(c){ c.classList.remove('active'); });
-    el.classList.add('active');
-    document.getElementById('gs-audience-value').value = el.getAttribute('data-value');
-  }
-  document.getElementById('gs-form').addEventListener('submit', function(e) {
-    if (!document.getElementById('gs-audience-value').value) {
-      e.preventDefault();
-      document.getElementById('gs-chip-grid').style.outline = '1px solid #e24b4a';
-    }
-  });
-</script>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Contact buttons row -->
-<div style="background:var(--navy-mid);border-top:1px solid var(--rule);padding:40px 32px;">
-  <div style="max-width:1080px;margin:0 auto;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center;">
-    <a href="mailto:ops@gridsearch.io" style="display:inline-block;background:var(--orange);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:15px 36px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--orange-dim)'" onmouseout="this.style.background='var(--orange)'">Get In Touch</a>
-    <a href="mailto:investors@gridsearch.io?subject=Investor%20Access%20Request%20%E2%80%94%20GRIDSEARCH" style="display:inline-block;background:transparent;color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:14px 36px;text-decoration:none;border:1px solid rgba(244,242,238,0.28);transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='rgba(244,242,238,0.28)';this.style.color='var(--white)'">Request Investor Access</a>
-  </div>
-</div>
-
-<!-- Footer bar -->
-<div style="border-top:1px solid var(--rule);">
-  <div class="confidential">
-    <span>GRIDSEARCH &copy; 2026</span>
-    <span>Isle of Man</span>
-    <span>gridsearch.io</span>
-  </div>
-  <div style="border-top:1px solid var(--rule);padding:14px 32px;max-width:1080px;margin:0 auto;text-align:right;">
-    <span style="font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rule);">Created by <a href="https://www.strategic-mind.consulting" target="_blank" rel="noopener" style="color:var(--grey);text-decoration:none;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='var(--grey)'">Strategic Mind Consulting</a></span>
-  </div>
-</div>
+  <footer>
+    <span>Proudly built in the Isle of Man.</span>
+  </footer>
 
 </body>
 </html>
