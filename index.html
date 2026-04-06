@@ -1092,7 +1092,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:16px;">Stay Informed</div>
         <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(32px,4vw,52px);text-transform:uppercase;color:var(--white);line-height:1.05;margin-bottom:16px;">Follow<br>the build.</h2>
-        <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--grey);max-width:40ch;">Register to receive updates on the platform build, pilot progress, and launch milestones — direct from the founder.</p>
+        <p style="font-size:15px;font-weight:300;line-height:1.8;color:var(--grey);max-width:40ch;">Register to receive updates on the platform build, pilot progress, and launch milestones.</p>
       </div>
 
       <!-- Right: Operational Grid Form v3 — reskinned to brand palette -->
@@ -1159,12 +1159,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <input type="hidden" name="audience-type" id="gs-audience-value" value="Investor" />
 
     <div class="gs-grid-2">
-      <input class="gs-input" id="full-name" name="full-name" type="text" placeholder="Full Name *" required />
-      <input class="gs-input" id="email" name="email" type="email" placeholder="Email Address *" required />
+      <input class="gs-input" id="first-name" name="first-name" type="text" placeholder="First Name *" required />
+      <input class="gs-input" id="last-name" name="last-name" type="text" placeholder="Last Name *" required />
     </div>
     <div class="gs-grid-2">
-      <input class="gs-input" id="organisation" name="organisation" type="text" placeholder="Company / Organisation" />
+      <input class="gs-input" id="organisation" name="organisation" type="text" placeholder="Company / Organisation *" required />
       <input class="gs-input" id="country" name="country" type="text" placeholder="Country *" required />
+    </div>
+    <input class="gs-input" id="email" name="email" type="email" placeholder="Email Address *" required style="width:100%;box-sizing:border-box;margin-bottom:10px;" />
     </div>
 
     <div class="gs-chip-header">
