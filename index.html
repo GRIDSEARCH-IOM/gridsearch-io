@@ -872,8 +872,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })();
 </script>
 
-<!-- 5. Botpoison — spam protection, not affected by consent -->
-<script src="https://unpkg.com/@botpoison/browser" async></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1184,11 +1182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </style>
 
 <div class="gs-wrap">
-  <form action="https://submit-form.com/ZhtiuMt2A" method="POST" id="gs-form">
-    <input type="hidden" name="_redirect" value="https://gridsearch.io/thanks/" />
-    <input type="hidden" name="_botpoison" data-botpoison-public-key="pk_e08f2f15-d485-4381-9524-fa09ca1c5df8" />
-    <input type="hidden" name="_append" value="false" />
-    <input class="gs-hp" type="checkbox" name="_honeypot" tabindex="-1" autocomplete="off" />
+  <form id="gs-form" novalidate>
     <input type="hidden" name="audience-type" id="gs-audience-value" value="Investor" />
 
     <div class="gs-grid-2">
@@ -1261,11 +1255,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     el.classList.add('active');
     document.getElementById('gs-audience-value').value = el.getAttribute('data-value');
   }
+
   document.getElementById('gs-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validate chip selection
     if (!document.getElementById('gs-audience-value').value) {
-      e.preventDefault();
       document.getElementById('gs-chip-grid').style.outline = '1px solid #e24b4a';
+      return;
     }
+
+    var btn = document.querySelector('.gs-btn-primary');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    var data = {
+      email:          document.getElementById('email').value,
+      'first-name':   document.getElementById('first-name').value,
+      'last-name':    document.getElementById('last-name').value,
+      'organisation': document.getElementById('organisation').value,
+      'country':      document.getElementById('country').value,
+      'audience-type': document.getElementById('gs-audience-value').value
+    };
+
+    fetch('https://brevo-form.gridsearch.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function(res) {
+      if (res.ok || res.status === 201) {
+        window.location.href = 'https://gridsearch.io/thanks/';
+      } else {
+        return res.json().then(function(err) {
+          throw new Error(err.message || 'Submission failed');
+        });
+      }
+    })
+    .catch(function(err) {
+      btn.disabled = false;
+      btn.textContent = 'Join the List  →';
+      alert('Something went wrong. Please try again.');
+    });
   });
 </script>
 
